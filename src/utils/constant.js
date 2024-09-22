@@ -1,6 +1,6 @@
 console.log('REACT_APP_URL_BACKEND:', process.env.REACT_APP_URL_BACKEND);
 
-export const DB_URL = process.env.REACT_APP_URL_BACKEND || 'http://localhost:1234';
+export const DB_URL = 'https://backend-recipes-production.up.railway.app/';
 export const MAX_FILE_SIZE = 5242880;
 export const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 export const APP_STATUS = {
