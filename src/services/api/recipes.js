@@ -22,7 +22,6 @@ import { DB_URL } from "../../utils/constant.js"
 // }
 
 export const recipesList = async () => {
-  console.log("DB_URL", DB_URL)
   
   return await fetch(`${DB_URL}/recipes`)
     .then(res => {

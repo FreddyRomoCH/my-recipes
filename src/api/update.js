@@ -12,12 +12,10 @@ export const apiUpdateUser = async (updateDetails) => {
         });
   
         if (response.status === 404) {
-          console.log('result:', result.error)
           return { error: result.error }
         }
   
         if (response.status === 500) {
-          console.log('result:', result.error)
           return { error: result.error }
         }
     

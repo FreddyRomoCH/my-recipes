@@ -33,7 +33,6 @@ export const useAuth = () => {
 
     if (result.error) {
       toast.error(result.error)
-      console.log('Register error:', result.error)
       return
     }
 
