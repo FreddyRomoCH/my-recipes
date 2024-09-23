@@ -69,29 +69,29 @@ export const useAuth = () => {
     logout();
   };
 
-  // const restoreSession = async () => {
-  //   try {
-  //     const response = await fetch(`${DB_URL}/users/verify-token`, {
-  //       method: "POST",
-  //       credentials: "include", // Include cookies in the request
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     });
-  //     const result = await response.json();
+  const restoreSession = async () => {
+    try {
+      const response = await fetch(`${DB_URL}/users/verify-token`, {
+        method: "POST",
+        credentials: "include", // Include cookies in the request
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const result = await response.json();
   
-  //     if (result.success) {
-  //       setUserDetails(result.data);
-  //       login();
-  //     } 
-  //   } catch (error) {
-  //     toast.error("Error trying to restore session");
-  //   }
-  // };
+      if (result.success) {
+        setUserDetails(result.data);
+        login();
+      } 
+    } catch (error) {
+      toast.error("Error trying to restore session");
+    }
+  };
 
-  // useEffect(() => {
-  //   restoreSession();
-  // }, [])
+  useEffect(() => {
+    restoreSession();
+  }, [])
 
   return { isAuthenticated, login, logout, handleLogout, registerUser, updateUser, loginUser, userDetails, setUserDetails };
 };
