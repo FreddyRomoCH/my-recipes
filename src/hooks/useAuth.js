@@ -36,9 +36,9 @@ export const useAuth = () => {
       return
     }
 
-    if (result.message === "success") {
-      toast.success("User registered successfully");
-      navigate("/sign-in", { state: { email: result.email, password: result.password } });
+    if (result.message === 'success') {
+      toast.success('User registered successfully');
+      navigate('/sign-in', { state: { email: result.email, password: result.password } });
     }
   };
 
@@ -67,7 +67,6 @@ export const useAuth = () => {
     toast.success(result.message)
     logout();
   };
-
   const restoreSession = async () => {
 
     try {

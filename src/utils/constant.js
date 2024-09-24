@@ -1,4 +1,5 @@
-export const DB_URL = 'https://backend-recipes-production.up.railway.app';
+// export const DB_URL = 'https://backend-recipes-production.up.railway.app';
+export const DB_URL = import.meta.env.VITE_DB_URL;
 export const MAX_FILE_SIZE = 5242880;
 export const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 export const APP_STATUS = {
