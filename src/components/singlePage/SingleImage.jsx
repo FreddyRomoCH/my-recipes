@@ -10,7 +10,7 @@ export function SingleImage({ country, image, title }) {
       <picture>
         <div className="absolute top-4 left-4 text-3xl z-10">{flag}</div>
         <img
-          src={`${DB_URL}/uploadsrecipes/${image}`}
+          src={`${DB_URL}/uploads/${image}`}
           alt={`Cover ${title}`}
           className="absolute object-cover top-0 left-0 w-full h-full hover:scale-110 transition-transform duration-500 ease-in-out"
         />

@@ -30,7 +30,7 @@ export function Boxes({ title, desc, image, id, flag, categories, username }) {
         </div>
         <picture>
           <img
-            src={`${DB_URL}/uploadsrecipes/${image}`}
+            src={`${DB_URL}/uploads/${image}`}
             alt={`Cover ${title}`}
             className="absolute object-cover top-0 left-0 w-full h-full group-hover:scale-110 transition-transform duration-500 ease-in-out"
           />

@@ -22,7 +22,6 @@ import { DB_URL } from "../../utils/constant.js"
 // }
 
 export const recipesList = async () => {
-  
   return await fetch(`${DB_URL}/recipes`)
     .then(res => {
       if (res.status >= 500 && res.status < 600) {
