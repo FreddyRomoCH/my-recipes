@@ -5,9 +5,14 @@ import { useAuth } from "../../hooks/useAuth.js";
 import { Link } from "react-router-dom";
 import { DB_URL } from "../../utils/constant.js";
 import { ProtectedRoute } from "../../ProtectedRoute.jsx";
+import { useEffect } from "react";
 
 export function Header() {
-  const { isAuthenticated, userDetails, handleLogout } = useAuth();
+  const { isAuthenticated, userDetails, handleLogout, restoreSession } = useAuth();
+
+  useEffect(() => {
+    restoreSession()
+  }, [])
 
   const profile_picture =
     userDetails &&

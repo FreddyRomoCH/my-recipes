@@ -11,8 +11,6 @@ export const useAuth = () => {
   const { isAuthenticated, login, logout, setUserDetails, userDetails } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // loginUser(setUserDetails)
-
   const loginUser = async (loginDetails) => {
     const result = await apiLoginUser(loginDetails)
 
@@ -67,6 +65,7 @@ export const useAuth = () => {
     toast.success(result.message)
     logout();
   };
+  
   const restoreSession = async () => {
 
     try {
@@ -78,6 +77,7 @@ export const useAuth = () => {
         }
       })
       const result = await response.json()
+      console.log(result)
 
       if (result.success) {
         setUserDetails(result.data)
@@ -88,9 +88,5 @@ export const useAuth = () => {
     }
   }
 
-  useEffect(() => {
-    restoreSession()
-  }, [])
-
-  return { isAuthenticated, login, logout, handleLogout, registerUser, updateUser, loginUser, userDetails, setUserDetails }
+  return { isAuthenticated, login, logout, handleLogout, registerUser, updateUser, loginUser, userDetails, setUserDetails, restoreSession }
 }
