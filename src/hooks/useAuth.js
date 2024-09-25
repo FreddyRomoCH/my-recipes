@@ -67,26 +67,71 @@ export const useAuth = () => {
   };
   
   const restoreSession = async () => {
-
     try {
       const response = await fetch(`${DB_URL}/users/verify-token`, {
         method: 'POST',
-        credentials: 'include', // Include cookies in the request
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
-      })
-      const result = await response.json()
-      console.log(result)
-
-      if (result.success) {
-        setUserDetails(result.data)
-        login()
+      });
+      const result = await response.json();
+  
+      if (response.ok && result.success) {
+        setUserDetails(result.data);
+        login();
+      } else if (result.error === 'Invalid token' || result.error === 'No token provided') {
+        // If the token is invalid or missing, try refreshing the token
+        const newAccessToken = await refreshToken();
+  
+        if (newAccessToken) {
+          // After refreshing, reattempt the session restoration
+          const retryResponse = await fetch(`${DB_URL}/users/verify-token`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${newAccessToken}` // If you store tokens manually
+            }
+          });
+          
+          const retryResult = await retryResponse.json();
+          
+          if (retryResult.success) {
+            setUserDetails(retryResult.data);
+            login();
+          }
+        }
       }
     } catch (error) {
-      toast.error('Error trying to restore session')
+      toast.error('Error trying to restore session');
     }
-  }
+  };
+
+  const refreshToken = async () => {
+    try {
+      const response = await fetch(`${DB_URL}/refresh-token`, {
+        method: 'POST',
+        credentials: 'include', // Include the refresh token cookie
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      const result = await response.json();
+      
+      if (response.ok && result.accessToken) {
+        // Optionally, store the new access token if not using cookies
+        return result.accessToken;
+      }
+  
+      throw new Error(result.error || 'Error refreshing token');
+    } catch (error) {
+      toast.error('Session expired. Please log in again.');
+      logout(); // Log the user out if refresh fails
+      return null;
+    }
+  };
 
   return { isAuthenticated, login, logout, handleLogout, registerUser, updateUser, loginUser, userDetails, setUserDetails, restoreSession }
 }
