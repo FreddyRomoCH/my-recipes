@@ -91,7 +91,6 @@ export const useAuth = () => {
             credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${newAccessToken}` // If you store tokens manually
             }
           });
           
@@ -112,7 +111,7 @@ export const useAuth = () => {
     try {
       const response = await fetch(`${DB_URL}/refresh-token`, {
         method: 'POST',
-        credentials: 'include', // Include the refresh token cookie
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -125,9 +124,9 @@ export const useAuth = () => {
         return result.accessToken;
       }
   
-      throw new Error(result.error || 'Error refreshing token');
-    } catch (error) {
       toast.error('Session expired. Please log in again.');
+      logout(); // Log the user out if refresh fails
+    } catch (error) {
       logout(); // Log the user out if refresh fails
       return null;
     }
