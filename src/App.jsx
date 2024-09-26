@@ -32,7 +32,7 @@ function App() {
     <>
       <Toaster position="top-center" richColors={true} />
 
-      <div className="grid grid-rows-[auto_1fr_auto] justify-between items-center text-center min-h-screen overflow-x-hidden">
+      <div className="grid grid-rows-[auto_1fr_auto] items-center text-center min-h-screen overflow-x-hidden">
         <AuthProvider>
           <Header />
           <Routes>

@@ -10,7 +10,9 @@ export default {
         'boxes': 'repeat(auto-fit, minmax(250px, 1fr))'
       },
       animation: {
-        'fade-out': 'fade-out 1.5s ease-out forwards'
+        'fade-out': 'fade-out 1.5s ease-out forwards',
+        'slide-down': 'slide-down 0.3s ease-in-out forwards',
+        'slide-up': 'slide-up 0.3s ease-in-out forwards',
       },
       keyframes: {
         'fade-out': {
