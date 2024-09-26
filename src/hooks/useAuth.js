@@ -20,9 +20,9 @@ export const useAuth = () => {
     }
 
     if (result.success) {
-      toast.success(result.success)
       setUserDetails(result.data);
       login();
+      toast.success(result.success)
     }
   };
 
@@ -76,16 +76,14 @@ export const useAuth = () => {
         }
       });
       const result = await response.json();
-  
+
       if (response.ok && result.success) {
         setUserDetails(result.data);
         login();
       } else if (result.error === 'Invalid token' || result.error === 'No token provided') {
-        // If the token is invalid or missing, try refreshing the token
         const newAccessToken = await refreshToken();
-  
+
         if (newAccessToken) {
-          // After refreshing, reattempt the session restoration
           const retryResponse = await fetch(`${DB_URL}/users/verify-token`, {
             method: 'POST',
             credentials: 'include',
@@ -93,9 +91,9 @@ export const useAuth = () => {
               'Content-Type': 'application/json',
             }
           });
-          
+
           const retryResult = await retryResponse.json();
-          
+
           if (retryResult.success) {
             setUserDetails(retryResult.data);
             login();
@@ -109,25 +107,24 @@ export const useAuth = () => {
 
   const refreshToken = async () => {
     try {
-      const response = await fetch(`${DB_URL}/refresh-token`, {
+      const response = await fetch(`${DB_URL}/users/refresh-token`, {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
       });
-  
+
       const result = await response.json();
-      
+
       if (response.ok && result.accessToken) {
-        // Optionally, store the new access token if not using cookies
         return result.accessToken;
       }
-  
+
       toast.error('Session expired. Please log in again.');
-      logout(); // Log the user out if refresh fails
+      logout();
     } catch (error) {
-      logout(); // Log the user out if refresh fails
+      logout();
       return null;
     }
   };

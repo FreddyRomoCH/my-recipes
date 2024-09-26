@@ -22,8 +22,10 @@ export const useGetRecipes = () => {
         setRecipes(result);
       } catch (error) {
         setError(error.message);
+        return
       } finally {
         setLoading(false);
+        return
       }
     };
   
