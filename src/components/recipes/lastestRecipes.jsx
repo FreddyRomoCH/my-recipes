@@ -40,7 +40,6 @@ export function LastestRecipes() {
           />
         );
       })
-      .reverse()
       .slice(0, 4);
 
   if (error) {
