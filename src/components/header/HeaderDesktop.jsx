@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { MenuLeft } from "./MenuLeft";
 import { MenuRight } from "./MenuRight";
-import { RecipesLogo } from "./RecipesLogo";
+import { RecipeLogo } from "./RecipeLogo.jsx";
 
 export function HeaderDesktop({ profileAvatar }) {
   return (
@@ -12,7 +13,9 @@ export function HeaderDesktop({ profileAvatar }) {
           </ul>
         </nav>
 
-        <RecipesLogo linkTo="/" widthLogo="w-24" />
+        <Link to="/">
+          <RecipeLogo widthLogo="w-24" color="#082f49" />
+        </Link>
 
         <nav className="flex-1">
           <ul className="relative flex flex-row justify-center gap-5 items-center [&>li]:p-3 [&>li]:rounded hover:[&>li]:bg-sky-950 hover:[&>li]:text-sky-100">

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { RecipesLogo } from "./RecipesLogo";
 import menuLogo from "../../assets/icons/menu.svg";
 import menuCloseLogo from "../../assets/icons/menu-close.svg";
 import { MenuLeft } from "./MenuLeft";
 import { useAuth } from "../../hooks/useAuth.js";
+import { RecipeLogo } from "./RecipeLogo.jsx";
+import { Link } from "react-router-dom";
 
 export function HeaderMobile({ profileAvatar }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,7 +35,9 @@ export function HeaderMobile({ profileAvatar }) {
         </div>
       </div>
       <div className="flex flex-1 justify-center">
-        <RecipesLogo linkTo="/" widthLogo="w-16" />
+        <Link to="/">
+          <RecipeLogo widthLogo="w-16" color="#e0f2fe" />
+        </Link>
       </div>
       <div className="flex justify-center flex-1">
         {isAuthenticated && profileAvatar}
