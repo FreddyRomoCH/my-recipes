@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { loginSchema } from "../../schema/users.js";
 import Input from "../form/Input.jsx";
 import { ButtonForm } from "../form/ButtonForm.jsx";
+import { APP_STATUS } from "../../utils/constant.js";
 
 export function Login() {
   const { isAuthenticated, loginUser } = useAuth();
@@ -14,6 +15,7 @@ export function Login() {
   const locationState = location.state;
   const [email, setEmail] = useState(locationState?.email || "");
   const [password, setPassword] = useState(locationState?.password || "");
+  const [formStatus, setFormStatus] = useState(APP_STATUS.IDLE);
 
   const inputCss =
     "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
@@ -25,18 +27,22 @@ export function Login() {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data) => {
+    setFormStatus(APP_STATUS.PENDING);
+
     try {
       loginUser({
         email: data.email,
         password: data.password,
       });
+      setFormStatus(APP_STATUS.SUCCESS);
     } catch (error) {
+      setFormStatus(APP_STATUS.ERROR);
       setError("root", {
         message: "Invalid email or password",
       });
@@ -92,9 +98,11 @@ export function Login() {
             />
 
             <ButtonForm
-              btnText={isSubmitting ? "Loading..." : "Log In"}
+              btnText={
+                formStatus === APP_STATUS.PENDING ? "Loading..." : "Log In"
+              }
               error={errors.root}
-              disabled={isSubmitting}
+              disabled={formStatus === APP_STATUS.PENDING}
               type="submit"
               className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
             />

@@ -96,7 +96,7 @@ export function AddRecipes() {
     handleSubmit,
     register,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(addRecipeSchema),
   });
@@ -382,10 +382,12 @@ export function AddRecipes() {
 
           <ButtonForm
             lastChild="true"
-            btnText={isSubmitting ? "Loading..." : "Add Recipe"}
+            btnText={
+              formStatus === APP_STATUS.PENDING ? "Loading..." : "Add Recipe"
+            }
             error={errors.root}
-            disabled={isSubmitting}
             type="submit"
+            disabled={formStatus === APP_STATUS.PENDING}
             className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
           />
         </form>
