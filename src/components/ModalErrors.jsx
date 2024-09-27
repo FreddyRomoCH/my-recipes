@@ -28,7 +28,7 @@ export function ModalErrors() {
 
   return (
     <div
-      className={`absolute top-1/4 left-0 right-0 w-fit place-self-center bg-sky-900 p-4 rounded-lg shadow-lg  
+      className={`absolute top-1/4 left-0 right-0 w-fit place-self-center bg-sky-950 p-4 rounded-lg shadow-lg  
         ${
           isMessageVisible
             ? "opacity-100 translateY(0) animate-fade-out z-50"

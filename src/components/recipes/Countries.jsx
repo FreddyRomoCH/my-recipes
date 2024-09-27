@@ -35,7 +35,7 @@ export function Countries() {
 
   const renderRecipes =
     recipes.length === 0 && country ? (
-      <p className="bg-sky-900 text-sky-100 text-lg font-light p-2 rounded">
+      <p className="bg-sky-950 text-sky-100 text-lg font-light p-2 rounded">
         {flag} - {country} has no recipes to show yet
       </p>
     ) : (

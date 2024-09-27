@@ -136,7 +136,7 @@ export function Register() {
               error={errors.root}
               disabled={isSubmitting}
               type="submit"
-              className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
+              className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
             />
           </form>
 

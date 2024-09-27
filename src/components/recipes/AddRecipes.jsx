@@ -76,6 +76,22 @@ export function AddRecipes() {
     setInstructionsInput(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    // e.preventDefault();
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      if (e.target.name === "ingredients") {
+        handleAddIngredients();
+      }
+
+      if (e.target.name === "instructions") {
+        handleAddInstructions();
+      }
+    }
+  };
+
   const {
     handleSubmit,
     register,
@@ -338,6 +354,7 @@ export function AddRecipes() {
               state={ingredients}
               setState={setIngredients}
               name="ingredients"
+              onKeyDown={handleKeyDown}
             />
           </div>
 
@@ -357,6 +374,7 @@ export function AddRecipes() {
               state={instructions}
               setState={setInstructions}
               name="instructions"
+              onKeyDown={handleKeyDown}
             />
           </div>
 
@@ -368,7 +386,7 @@ export function AddRecipes() {
             error={errors.root}
             disabled={isSubmitting}
             type="submit"
-            className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
+            className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
           />
         </form>
       </section>

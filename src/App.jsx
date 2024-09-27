@@ -14,8 +14,8 @@ import { ProtectedRoute } from "./ProtectedRoute.jsx";
 import { AddRecipes } from "./components/recipes/AddRecipes.jsx";
 import { Countries } from "./components/recipes/Countries.jsx";
 import { usePageLoaded } from "./hooks/usePageLoaded.js";
-import "./index.css";
 import { Loading } from "./components/Loading.jsx";
+import "./index.css";
 
 function App() {
   const { isPageLoaded } = usePageLoaded();

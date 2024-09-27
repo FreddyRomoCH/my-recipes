@@ -3,7 +3,7 @@
 
 export function Footer() {
   return (
-    <footer className="relative w-full mx-auto flex flex-col items-center bg-sky-900 text-sky-200 p-6">
+    <footer className="relative w-full mx-auto flex flex-col items-center bg-sky-950 text-sky-100 p-6">
       {/* {IS_DEVELOPMENT && <Debugger />} */}
       <nav>
         <ul className="font-light text-lg flex flex-row gap-3 justify-center items-center">

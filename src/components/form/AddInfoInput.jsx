@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 export function AddInfoInput({
   title,
   type,
@@ -10,6 +12,7 @@ export function AddInfoInput({
   setState,
   name,
   error,
+  onKeyDown,
 }) {
   const handleCancel = (index) => {
     setState((prevState) => {
@@ -30,6 +33,7 @@ export function AddInfoInput({
             <textarea
               value={valueInput}
               onChange={onChange}
+              onKeyDown={onKeyDown}
               style={{
                 resize: "vertical",
                 minHeight: "135px",
@@ -43,6 +47,7 @@ export function AddInfoInput({
             <input
               value={valueInput}
               onChange={onChange}
+              onKeyDown={onKeyDown}
               className={className}
               type="text"
               id={inputID}
@@ -59,20 +64,20 @@ export function AddInfoInput({
 
         <button
           type="button"
-          className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
+          className="rounded-md bg-sky-950 px-5 py-2 text-sky-100 text-md"
           onClick={onClick}
         >
           Add
         </button>
 
-        <ul className="bg-sky-900 p-2 rounded-md flex-1">
+        <ul className="bg-sky-950 p-2 rounded-md flex-1">
           {state.length > 0 ? (
             state.map((el, index) => (
               <li
-                className="text-sky-100 font-thin text-base flex flex-row justify-center gap-5 mb-3"
+                className="text-sky-100 font-thin text-base flex flex-row justify-between items-center gap-2 mb-3"
                 key={index}
               >
-                <p>{el}</p>
+                <p className="flex-1">{el}</p>
                 <button
                   type="button"
                   className="text-red-500"

@@ -32,7 +32,6 @@ export function Login() {
 
   const onSubmit = async (data) => {
     try {
-      // await new Promise((resolve) => setTimeout(resolve, 1000));
       loginUser({
         email: data.email,
         password: data.password,
@@ -97,7 +96,7 @@ export function Login() {
               error={errors.root}
               disabled={isSubmitting}
               type="submit"
-              className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
+              className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
             />
           </form>
 

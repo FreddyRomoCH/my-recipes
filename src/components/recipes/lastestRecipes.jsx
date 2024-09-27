@@ -2,11 +2,10 @@ import { Boxes } from "./Boxes.jsx";
 import { useGetRecipes } from "../../hooks/useGetRecipes.js";
 import { Link } from "react-router-dom";
 import { useGetCountries } from "../../hooks/useCountries.js";
-import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
 
 export function LastestRecipes() {
-  const { getAllRecipes, loading, error } = useGetRecipes();
+  const { getAllRecipes, error } = useGetRecipes();
   const recipes = getAllRecipes();
   const { getFlag } = useGetCountries();
 
@@ -43,14 +42,6 @@ export function LastestRecipes() {
       })
       .reverse()
       .slice(0, 4);
-
-  if (loading) {
-    return (
-      <h2 className="text-sky-950 font-medium text-3xl my-6 text-center">
-        <Loading />
-      </h2>
-    );
-  }
 
   if (error) {
     return (

@@ -6,7 +6,7 @@ export function SingleIngredients({ ingredients }) {
     });
 
   return (
-    <ul className="shrink flex flex-col gap-4 bg-sky-900 text-sky-100 p-4 box-border rounded font-thin">
+    <ul className="shrink flex flex-col gap-4 bg-sky-950 text-sky-100 p-4 box-border rounded font-thin">
       <li>
         <span className="font-semibold text-lg">Ingredients:</span>
       </li>

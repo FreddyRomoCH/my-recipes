@@ -4,7 +4,7 @@ export function ProfileData({ userDetails, handleUpdate, btn_text }) {
   return (
     <>
       <button
-        className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
+        className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
         onClick={handleUpdate}
       >
         {btn_text}
