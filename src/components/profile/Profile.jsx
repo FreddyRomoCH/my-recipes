@@ -5,12 +5,16 @@ import { DB_URL, APP_STATUS } from "../../utils/constant.js";
 import { ProfileInfo } from "./ProfileInfo.jsx";
 import { ProfileYourRecipes } from "./ProfileYourRecipes.jsx";
 import { ProfileYourFavorites } from "./ProfileYourFavorites.jsx";
+import { useUser } from "../../hooks/useUser.js";
 
 export function Profile() {
   const { isAuthenticated, userDetails } = useAuth();
   const [previewImage, setPreviewImage] = useState(null);
   const profileRef = useRef();
   const [appStatus, setAppStatus] = useState(APP_STATUS.IDLE);
+  const { getUserImage } = useUser();
+
+  const profile_picture = getUserImage();
 
   useEffect(() => {
     if (
@@ -22,12 +26,6 @@ export function Profile() {
       profileRef.current.value = `${previewImage}`;
     }
   }, [previewImage, appStatus]);
-
-  const profile_picture =
-    userDetails &&
-    (userDetails.profile_picture === "" || userDetails.profile_picture === null)
-      ? "/images/profile.jpg"
-      : `${DB_URL}/uploads/${userDetails?.profile_picture}`;
 
   const handleUpdate = () => {
     setAppStatus(APP_STATUS.EDITING);

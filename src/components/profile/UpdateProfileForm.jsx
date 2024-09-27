@@ -69,7 +69,7 @@ export function UpdateProfileForm({
   };
 
   const inputCss =
-    "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
+    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-52";
   const inputError = "border-red-500 hover:border-red-500 focus:border-red-500";
   const inputSuccess =
     "border-sky-900 hover:border-sky-500 focus:border-sky-500";
@@ -129,7 +129,7 @@ export function UpdateProfileForm({
   return (
     <main className="relative flex flex-col justify-center items-center">
       <form
-        className="grid grid-cols-2 gap-2 mb-2"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 [&>div]:col-span-2 sm:[&>div:not(:first-child)]:col-span-1"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
       >
@@ -140,7 +140,6 @@ export function UpdateProfileForm({
           error={errors.root}
           disabled={appStatus === APP_STATUS.PENDING}
           type="submit"
-          // isSubmitting={appStatus === APP_STATUS.PENDING}
           className="rounded-md bg-sky-900 px-5 py-2 text-sky-200 text-md"
         />
 
