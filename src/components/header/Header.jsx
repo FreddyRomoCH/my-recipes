@@ -1,6 +1,6 @@
 import { useAuth } from "../../hooks/useAuth.js";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { HeaderMobile } from "./HeaderMobile.jsx";
 import { HeaderDesktop } from "./HeaderDesktop.jsx";

@@ -6,7 +6,7 @@ import { registerSchema } from "../../schema/users.js";
 import { onSubmitForm } from "../../services/onSubmitForm.js";
 import { toast } from "sonner";
 import Input from "../form/Input.jsx";
-import { ButtonForm } from "../form/ButtonForm.jsx";
+import ButtonForm from "../form/ButtonForm.jsx";
 
 export function Register() {
   const { isAuthenticated, registerUser } = useAuth();

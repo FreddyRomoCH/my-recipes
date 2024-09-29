@@ -37,6 +37,4 @@ const Input = forwardRef(({ label, error, lastChild, ...props }, ref) => {
   );
 });
 
-Input.displayName = "Input";
-
 export default Input;

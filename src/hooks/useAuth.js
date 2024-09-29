@@ -101,6 +101,7 @@ export const useAuth = () => {
         }
       }
     } catch (error) {
+      navigate('/sign-in');
       toast.error('Error trying to restore session');
     }
   };

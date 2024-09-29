@@ -1,12 +1,12 @@
 import { useAuth } from "../../hooks/useAuth.js";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { loginSchema } from "../../schema/users.js";
 import Input from "../form/Input.jsx";
-import { ButtonForm } from "../form/ButtonForm.jsx";
+import ButtonForm from "../form/ButtonForm.jsx";
 import { APP_STATUS } from "../../utils/constant.js";
 
 export function Login() {
@@ -16,6 +16,7 @@ export function Login() {
   const [email, setEmail] = useState(locationState?.email || "");
   const [password, setPassword] = useState(locationState?.password || "");
   const [formStatus, setFormStatus] = useState(APP_STATUS.IDLE);
+  const logInBtnRef = useRef(null);
 
   const inputCss =
     "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
@@ -58,6 +59,16 @@ export function Login() {
     setPassword(event.target.value);
   };
 
+  const handleOnKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (logInBtnRef.current) {
+        logInBtnRef.current.focus();
+        logInBtnRef.current.click();
+      }
+    }
+  };
+
   return (
     <main className="relative flex flex-col justify-center items-center">
       {/* <Toast /> */}
@@ -83,6 +94,7 @@ export function Login() {
               autoComplete="email"
               value={email}
               onChange={handleChangeValueEmail}
+              onKeyDown={handleOnKeyDown}
             />
 
             <Input
@@ -95,9 +107,11 @@ export function Login() {
               autoComplete="password"
               value={password}
               onChange={handleChangeValuePassword}
+              onKeyDown={handleOnKeyDown}
             />
 
             <ButtonForm
+              ref={logInBtnRef}
               btnText={
                 formStatus === APP_STATUS.PENDING ? "Loading..." : "Log In"
               }

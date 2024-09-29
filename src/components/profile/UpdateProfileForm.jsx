@@ -4,7 +4,7 @@ import { updateSchema } from "../../schema/users";
 import { onSubmitForm } from "../../services/onSubmitForm";
 import { toast } from "sonner";
 import Input from "../form/Input";
-import { ButtonForm } from "../form/ButtonForm";
+import ButtonForm from "../form/ButtonForm";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 

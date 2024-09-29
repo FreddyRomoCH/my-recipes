@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { APP_STATUS } from "../../utils/constant";
 import { useForm } from "react-hook-form";
 import Input from "../form/Input";
-import { ButtonForm } from "../form/ButtonForm";
+import ButtonForm from "../form/ButtonForm";
 import {
   Slider,
   FormControl,
