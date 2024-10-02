@@ -13,21 +13,9 @@ import { Toaster } from "sonner";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
 import { AddRecipes } from "./components/recipes/AddRecipes.jsx";
 import { Countries } from "./components/recipes/Countries.jsx";
-// import { usePageLoaded } from "./hooks/usePageLoaded.js";
-// import { Loading } from "./components/Loading.jsx";
 import "./index.css";
 
 function App() {
-  // const { isPageLoaded } = usePageLoaded();
-
-  // if (!isPageLoaded) {
-  //   return (
-  //     <main className="flex justify-center items-center h-dvh w-dvw">
-  //       <Loading />
-  //     </main>
-  //   );
-  // }
-
   return (
     <>
       <Toaster position="top-center" richColors={true} />

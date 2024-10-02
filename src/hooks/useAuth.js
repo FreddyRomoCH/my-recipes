@@ -97,15 +97,12 @@ export const useAuth = () => {
           if (retryResult.success) {
             setUserDetails(retryResult.data);
             login();
-          } else {
-            navigate('/sign-in');
-            toast.error('Session expired. Please log in again.');
-          }
+          } 
         }
       }
     } catch (error) {
-      navigate('/sign-in');
-      toast.error('Error trying to restore session');
+      // navigate('/sign-in');
+      // toast.error('Error trying to restore session');
     }
   };
 

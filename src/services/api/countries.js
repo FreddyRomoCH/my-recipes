@@ -1,4 +1,5 @@
 export const countriesList = [
+    { name: "No specific country", flag: "", link: "", short: "" },
     { name: "Afghanistan", flag: "🇦🇫", link: "/afghanistan", short: "af" },
     { name: "Albania", flag: "🇦🇱", link: "/albania", short: "al" },
     { name: "Algeria", flag: "🇩🇿", link: "/algeria", short: "dz" },

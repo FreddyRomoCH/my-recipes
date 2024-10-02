@@ -28,7 +28,7 @@ export function MenuLeft() {
 
       {isMobile && isAuthenticated && (
         <li className="group font-medium italic py-3 text-lg">
-          <button onClick={handleLogout}>Log out</button>
+          <button onClick={handleLogout}>Log Out</button>
         </li>
       )}
     </>

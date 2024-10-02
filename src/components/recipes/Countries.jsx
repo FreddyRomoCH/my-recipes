@@ -98,11 +98,13 @@ export function Countries() {
                 onChange={handleChangeCountry}
               >
                 {countries &&
-                  countries.map(({ name }) => (
-                    <MenuItem value={name} key={name}>
-                      {name}
-                    </MenuItem>
-                  ))}
+                  countries.map(({ name }) =>
+                    name === "No specific country" ? null : (
+                      <MenuItem value={name} key={name}>
+                        {name}
+                      </MenuItem>
+                    )
+                  )}
               </Select>
             </FormControl>
           </div>

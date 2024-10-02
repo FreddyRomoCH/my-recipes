@@ -54,7 +54,8 @@ export function SingleInfoRecipe({
             <strong>Prep Time:</strong> {prep_time}
           </li>
           <li>
-            <strong>Country:</strong> {country}
+            <strong>Country:</strong>{" "}
+            {country === "No specific country" ? "No specific" : country}
           </li>
         </ul>
       </section>
