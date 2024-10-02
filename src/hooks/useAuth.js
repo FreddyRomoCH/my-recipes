@@ -122,7 +122,7 @@ export const useAuth = () => {
         return result.accessToken;
       }
 
-      toast.error('Session expired. Please log in again.');
+      // toast.error('Session expired. Please log in again.');
       logout();
     } catch (error) {
       logout();
