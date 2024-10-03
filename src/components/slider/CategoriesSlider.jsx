@@ -17,7 +17,7 @@ export function CategoriesSlider() {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    swipe: true,
+    swipe: false,
     swipeToSlide: false,
     responsive: [
       {
@@ -27,8 +27,8 @@ export function CategoriesSlider() {
           slidesToScroll: 1,
           infinite: true,
           dots: true,
-          swipe: true,
-          swipeToSlide: true,
+          swipe: false,
+          swipeToSlide: false,
         },
       },
       {
