@@ -83,3 +83,12 @@ html {
       transform: scaleY(0);
     }
   }
+
+  .slick-slide {
+    padding: 0 5px;
+  }
+
+  .slick-dots {
+    position: relative;
+    bottom: 0;
+  }
