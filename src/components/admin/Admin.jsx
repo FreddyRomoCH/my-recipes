@@ -84,7 +84,7 @@ export function Admin() {
   };
 
   const thCss = "font-semibold text-lg mb-5 border-sky-950 border-b-2 py-2";
-  const tableCss = "border-sky-950 border-b-2 py-2";
+  const tableCss = "border-sky-950 border-b-2 py-2 col-span-1";
 
   return (
     <main className="flex- flex-col justify-between items-center gap-3 py-3">
@@ -93,11 +93,11 @@ export function Admin() {
       </header>
 
       <section className="grid grid-cols-5 justify-center w-full font-light bg-sky-100">
-        <div className={thCss}>Recipe</div>
-        <div className={thCss}>Image</div>
-        <div className={thCss}>User</div>
-        <div className={thCss}>Created At</div>
-        <div className={thCss}>Action</div>
+        <div className={`${thCss}`}>Recipe</div>
+        <div className={`${thCss}`}>Image</div>
+        <div className={`${thCss}`}>User</div>
+        <div className={`${thCss}`}>Created At</div>
+        <div className={`${thCss}`}>Action</div>
 
         {recipes.map((recipe) => {
           const { id, title, main_image, username, created_at, is_active } =
@@ -108,7 +108,7 @@ export function Admin() {
           );
           return (
             <Fragment key={id}>
-              <div className={tableCss}>
+              <div className={`${tableCss}`}>
                 <Link
                   target="_blank"
                   to={`/recipes/${id}/${title
@@ -127,8 +127,8 @@ export function Admin() {
                   />
                 </picture>
               </div>
-              <div className={tableCss}>{username}</div>
-              <div className={tableCss}>{formattedDate}</div>
+              <div className={`${tableCss}`}>{username}</div>
+              <div className={`${tableCss}`}>{formattedDate}</div>
               <div
                 className={`${tableCss} flex flex-row justify-center gap-2 items-start content-center`}
               >
