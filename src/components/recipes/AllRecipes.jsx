@@ -12,35 +12,37 @@ export function AllRecipes() {
   const recipesList =
     recipes &&
     recipes.length > 0 &&
-    recipes.map((recipe) => {
-      const {
-        id,
-        title,
-        description,
-        country,
-        main_image,
-        categories,
-        username,
-        is_active,
-      } = recipe;
+    recipes
+      .filter((recipe) => recipe.is_active)
+      .map((recipe) => {
+        const {
+          id,
+          title,
+          description,
+          country,
+          main_image,
+          categories,
+          username,
+          is_active,
+        } = recipe;
 
-      const flag = getFlag(country);
+        const flag = getFlag(country);
 
-      return (
-        <Boxes
-          key={id}
-          id={id}
-          image={main_image}
-          title={title}
-          desc={description}
-          country={country}
-          categories={categories}
-          flag={flag}
-          username={username}
-          is_active={is_active}
-        />
-      );
-    });
+        return (
+          <Boxes
+            key={id}
+            id={id}
+            image={main_image}
+            title={title}
+            desc={description}
+            country={country}
+            categories={categories}
+            flag={flag}
+            username={username}
+            is_active={is_active}
+          />
+        );
+      });
 
   if (loading) {
     return (

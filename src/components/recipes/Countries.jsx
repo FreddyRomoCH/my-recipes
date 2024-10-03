@@ -39,31 +39,33 @@ export function Countries() {
         {flag} - {country} has no recipes to show yet
       </p>
     ) : (
-      recipes.map((recipe) => {
-        const {
-          id,
-          title,
-          description,
-          country,
-          main_image,
-          categories,
-          is_active,
-        } = recipe;
+      recipes
+        .filter((recipe) => recipe.is_active)
+        .map((recipe) => {
+          const {
+            id,
+            title,
+            description,
+            country,
+            main_image,
+            categories,
+            is_active,
+          } = recipe;
 
-        return (
-          <Boxes
-            key={id}
-            id={id}
-            image={main_image}
-            title={title}
-            desc={description}
-            country={country}
-            categories={categories}
-            flag={flag}
-            is_active={is_active}
-          />
-        );
-      })
+          return (
+            <Boxes
+              key={id}
+              id={id}
+              image={main_image}
+              title={title}
+              desc={description}
+              country={country}
+              categories={categories}
+              flag={flag}
+              is_active={is_active}
+            />
+          );
+        })
     );
 
   const boxInput = "bg-sky-100 p-2 rounded-md";

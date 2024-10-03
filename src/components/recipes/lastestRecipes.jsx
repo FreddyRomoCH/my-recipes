@@ -13,6 +13,7 @@ export function LastestRecipes() {
     recipes &&
     recipes.length > 0 &&
     recipes
+      .filter((recipe) => recipe.is_active)
       .map((recipe) => {
         const {
           id,

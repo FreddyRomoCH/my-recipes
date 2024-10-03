@@ -20,6 +20,7 @@ export function SearchResults({ search, setSearch }) {
           <li>No results found</li>
         ) : (
           recipes
+            .filter((recipe) => recipe.is_active)
             .map((recipe) => {
               const { id, title } = recipe;
 

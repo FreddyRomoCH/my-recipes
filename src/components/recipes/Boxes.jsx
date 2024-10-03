@@ -11,10 +11,12 @@ export function Boxes({
   username,
   is_active,
 }) {
-  return !is_active ? null : (
+  return (
     <div
       key={id}
-      className="box w-full relative flex flex-col justify-center shadow-sm shadow-sky-950 rounded-lg group overflow-hidden"
+      className={`box w-full relative flex flex-col justify-center shadow-sm shadow-sky-950 rounded-lg group overflow-hidden ${
+        !is_active && "opacity-50"
+      }`}
     >
       <div className="relative h-40 overflow-hidden">
         <div className="absolute z-10 top-[-100%] left-0 bg-sky-800/75 w-full flex flex-row flex-nowrap items-center justify-between px-1 group-hover:top-0 transition-[top] duration-500 ease-out">
@@ -51,12 +53,19 @@ export function Boxes({
         <p className="text-sky-950 font-thin line-clamp text-sm italic">
           {desc}
         </p>
-        <Link
-          to={`/recipes/${id}/${title.toLowerCase().replace(/\s/g, "-")}`}
-          className="bg-sky-800 text-sky-100 rounded-md p-2 hover:bg-sky-950"
-        >
-          Read More
-        </Link>
+
+        {!is_active ? (
+          <p className="bg-gray-600 rounded text-sky-100 p-2 font-thin">
+            Waiting admin's activation
+          </p>
+        ) : (
+          <Link
+            to={`/recipes/${id}/${title.toLowerCase().replace(/\s/g, "-")}`}
+            className="bg-sky-800 text-sky-100 rounded-md p-2 hover:bg-sky-950"
+          >
+            Read More
+          </Link>
+        )}
 
         {username && (
           <p className="text-sky-950 font-thin">Posted By: {username}</p>
