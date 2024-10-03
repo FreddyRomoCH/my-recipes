@@ -6,28 +6,28 @@ export const useGetRecipes = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    const recipesFetched = async () => {
-      setLoading(true);
-      setError(null);
-      
-      try {
-        const result = await recipesList();
+  const fetchRecipes = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const result = await recipesList();
 
-        if (result.error) {
-          setError(result.error)
-          return
-        }
-
-        setRecipes(result);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+      if (result.error) {
+        setError(result.error)
+        return
       }
-    };
-  
-    recipesFetched();
+
+      setRecipes(result);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecipes();
   }, []);
 
   const getAllRecipes = () => {
@@ -70,5 +70,5 @@ export const useGetRecipes = () => {
     return recipes.filter(recipe => recipe.user_id === id)
   }
 
-  return { getAllRecipes, getRecipesByCountry, getRecipesByCategory, getSingleRecipe, getRecipesByUser, loading, error }
+  return { fetchRecipes, getAllRecipes, getRecipesByCountry, getRecipesByCategory, getSingleRecipe, getRecipesByUser, loading, error }
 };

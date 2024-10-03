@@ -13,6 +13,7 @@ import { Toaster } from "sonner";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
 import { AddRecipes } from "./components/recipes/AddRecipes.jsx";
 import { Countries } from "./components/recipes/Countries.jsx";
+import { Admin } from "./components/admin/Admin.jsx";
 import "./index.css";
 
 function App() {
@@ -47,6 +48,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AddRecipes />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
                 </ProtectedRoute>
               }
             ></Route>

@@ -22,6 +22,7 @@ export function LastestRecipes() {
           main_image,
           categories,
           username,
+          is_active,
         } = recipe;
 
         const flag = getFlag(country);
@@ -37,6 +38,7 @@ export function LastestRecipes() {
             categories={categories}
             flag={flag}
             username={username}
+            is_active={is_active}
           />
         );
       })

@@ -40,8 +40,15 @@ export function Countries() {
       </p>
     ) : (
       recipes.map((recipe) => {
-        const { id, title, description, country, main_image, categories } =
-          recipe;
+        const {
+          id,
+          title,
+          description,
+          country,
+          main_image,
+          categories,
+          is_active,
+        } = recipe;
 
         return (
           <Boxes
@@ -53,6 +60,7 @@ export function Countries() {
             country={country}
             categories={categories}
             flag={flag}
+            is_active={is_active}
           />
         );
       })

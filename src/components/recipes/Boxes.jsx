@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import { DB_URL } from "../../utils/constant";
 
-export function Boxes({ title, desc, image, id, flag, categories, username }) {
-  return (
+export function Boxes({
+  title,
+  desc,
+  image,
+  id,
+  flag,
+  categories,
+  username,
+  is_active,
+}) {
+  return !is_active ? null : (
     <div
       key={id}
       className="box w-full relative flex flex-col justify-center shadow-sm shadow-sky-950 rounded-lg group overflow-hidden"

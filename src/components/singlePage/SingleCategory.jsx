@@ -38,8 +38,15 @@ export function SingleCategory() {
     recipes &&
     recipes.length > 0 &&
     recipes.map((recipe) => {
-      const { id, title, description, country, main_image, categories } =
-        recipe;
+      const {
+        id,
+        title,
+        description,
+        country,
+        main_image,
+        categories,
+        is_active,
+      } = recipe;
       const flag = getFlag(country);
 
       return (
@@ -52,6 +59,7 @@ export function SingleCategory() {
           country={country}
           categories={categories}
           flag={flag}
+          is_active={is_active}
         />
       );
     });

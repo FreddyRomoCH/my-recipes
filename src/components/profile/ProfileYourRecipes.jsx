@@ -45,6 +45,7 @@ export function ProfileYourRecipes({ userDetails }) {
           main_image,
           categories,
           username,
+          is_active,
         } = recipe;
 
         const flag = getFlag(country);
@@ -60,6 +61,7 @@ export function ProfileYourRecipes({ userDetails }) {
             categories={categories}
             flag={flag}
             username={username}
+            is_active={is_active}
           />
         );
       })
