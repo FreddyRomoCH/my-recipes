@@ -1,25 +1,41 @@
 import { useGetRecipes } from "../../hooks/useGetRecipes.js";
+import { useUser } from "../../hooks/useUser.js";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
-import { DB_URL } from "../../utils/constant";
-import { format } from "date-fns";
-import { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Modal } from "./Modal.jsx";
 import { acceptedRecipe, deactivateRecipe } from "../../api/admin.js";
 import { toast } from "sonner";
+import { RecipesAdmin } from "./RecipesAdmin.jsx";
+import {
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import { UsersAdmin } from "./UsersAdmin.jsx";
 
 export function Admin() {
   const { fetchRecipes, getAllRecipes, loading, error } = useGetRecipes();
+  const { getUsers } = useUser();
   const [recipes, setRecipes] = useState([]);
+  const [users, setUsers] = useState([]);
   const [modalAction, setModalAction] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedRadio, setSelectedRadio] = useState("radioRecipes");
+  const [adminState, setAdminState] = useState({
+    isShowing: "recipes",
+  });
 
   useEffect(() => {
     setRecipes(getAllRecipes());
-  }, [getAllRecipes]);
+  }, [getAllRecipes, adminState.isShowing]);
+
+  useEffect(() => {
+    setUsers(getUsers());
+  }, [getUsers, adminState.isShowing]);
 
   if (loading) {
     return (
@@ -83,104 +99,76 @@ export function Admin() {
     //TODO: Implement the logic to delete a recipe
   };
 
+  const handleRadioChange = (event) => {
+    const { value } = event.target;
+    setSelectedRadio(value);
+
+    if (value === "radioRecipes") {
+      setAdminState((prevState) => {
+        return {
+          ...prevState,
+          isShowing: "recipes",
+        };
+      });
+      setRecipes(recipes);
+    }
+
+    if (value === "radioUsers") {
+      setAdminState((prevState) => {
+        return {
+          ...prevState,
+          isShowing: "users",
+        };
+      });
+      setRecipes(users);
+    }
+  };
+
   const thCss = "font-semibold text-lg mb-5 border-sky-950 border-b-2 py-2";
   const tableCss = "border-sky-950 border-b-2 py-2 col-span-1";
 
   return (
-    <main className="flex- flex-col justify-between items-center gap-3 py-3">
+    <main className="flex flex-col justify-start items-center gap-3 py-3">
       <header>
         <h1 className="text-sky-950 font-bold text-3xl mb-6">Admin</h1>
+        <div>
+          <FormControl>
+            <RadioGroup
+              defaultValue="radioRecipes"
+              name="radio-buttons-group"
+              value={selectedRadio}
+              onChange={handleRadioChange}
+            >
+              <FormControlLabel
+                value="radioRecipes"
+                control={<Radio />}
+                label="Recipes"
+              />
+              <FormControlLabel
+                value="radioUsers"
+                control={<Radio />}
+                label="Users"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
       </header>
 
-      <section className="grid grid-cols-5 justify-center w-full font-light bg-sky-100">
-        <div className={`${thCss}`}>Recipe</div>
-        <div className={`${thCss}`}>Image</div>
-        <div className={`${thCss}`}>User</div>
-        <div className={`${thCss}`}>Created At</div>
-        <div className={`${thCss}`}>Action</div>
+      {adminState.isShowing === "recipes" && (
+        <RecipesAdmin
+          thCss={thCss}
+          tableCss={tableCss}
+          onClickDeactivate={handleDeactivateRecipe}
+          onClickAccept={handleAcceptRecipe}
+          onClickDelete={handleDeleteRecipe}
+          openModal={openModal}
+          recipes={recipes}
+        />
+      )}
 
-        {recipes.map((recipe) => {
-          const { id, title, main_image, username, created_at, is_active } =
-            recipe;
-          const formattedDate = format(
-            new Date(created_at),
-            "dd/MM/yyyy HH:mm"
-          );
-          return (
-            <Fragment key={id}>
-              <div className={`${tableCss}`}>
-                <Link
-                  target="_blank"
-                  to={`/recipes/${id}/${title
-                    .toLowerCase()
-                    .replace(/\s/g, "-")}`}
-                >
-                  {title}
-                </Link>
-              </div>
-              <div className={`${tableCss} flex justify-center`}>
-                <picture>
-                  <img
-                    className="w-28 h-28 object-cover"
-                    src={`${DB_URL}/uploads/${main_image}`}
-                    alt={`Cover ${title}`}
-                  />
-                </picture>
-              </div>
-              <div className={`${tableCss}`}>{username}</div>
-              <div className={`${tableCss}`}>{formattedDate}</div>
-              <div
-                className={`${tableCss} flex flex-row justify-center gap-2 items-start content-center`}
-              >
-                {is_active ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        openModal(
-                          handleDeactivateRecipe,
-                          id,
-                          "Are you sure you want to deactivate this recipe?"
-                        )
-                      }
-                      className="bg-gray-500 hover:bg-gray-700 text-sky-50 rounded-lg p-2"
-                    >
-                      Deactivate
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={handleDeleteRecipe}
-                      className="bg-red-500 hover:bg-red-700 text-sky-100 rounded-lg p-2"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      onClick={() =>
-                        openModal(
-                          handleAcceptRecipe,
-                          id,
-                          "Are you sure you want to accept this recipe?"
-                        )
-                      }
-                      className="bg-green-800 hover:bg-green-950 text-sky-100 rounded-lg p-2"
-                    >
-                      Accept
-                    </button>
-                  </>
-                )}
-              </div>
-            </Fragment>
-          );
-        })}
-
-        <div className="col-span-5 text-center mt-3">
-          {/* TODO: Implement the logic to load more recipes */}
-          <button className="bg-sky-950 hover:bg-sky-700 text-sky-100 rounded-lg p-2">
-            Load More
-          </button>
-        </div>
-      </section>
+      {adminState.isShowing === "users" && (
+        <UsersAdmin thCss={thCss} tableCss={tableCss} users={users} />
+      )}
 
       <Modal
         isOpen={isModalOpen}
