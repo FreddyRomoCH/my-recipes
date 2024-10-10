@@ -4,7 +4,7 @@ import { usePreferredLanguage } from "@uidotdev/usehooks";
 
 export function useTranslation (toTranslate) {
     const {language} = usePreferredLanguage()
-    const [userLanguage, setUserLanguage] = useState("es")
+    const [userLanguage, setUserLanguage] = useState("en")
     const [translation, setTranslation] = useState({})
 
     useEffect(() => {

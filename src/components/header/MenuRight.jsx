@@ -1,9 +1,11 @@
 import { Search } from "../search/Search";
 import { useAuth } from "../../hooks/useAuth.js";
 import { Navs } from "./Navs.jsx";
+import { useTranslation } from "react-i18next";
 
 export function MenuRight({ profileAvatar }) {
   const { isAuthenticated, handleLogout, userDetails } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -11,8 +13,8 @@ export function MenuRight({ profileAvatar }) {
 
       {!isAuthenticated && (
         <>
-          <Navs href="/sign-in" title="Sign In" key="sign-in" />
-          <Navs href="/register" title="Register" key="register" />
+          <Navs href="/sign-in" title={t("SignIn")} key="sign-in" />
+          <Navs href="/register" title={t("Register")} key="register" />
         </>
       )}
 
@@ -23,7 +25,7 @@ export function MenuRight({ profileAvatar }) {
           )}
 
           <li className="group font-medium italic py-3 text-lg">
-            <button onClick={handleLogout}>Log out</button>
+            <button onClick={handleLogout}>{t("LogOut")}</button>
           </li>
           {profileAvatar}
         </>

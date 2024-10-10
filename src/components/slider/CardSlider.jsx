@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function CardSlider({ title, image }) {
+  const { t } = useTranslation();
+
   return (
     <li
       className="relative h-[400px] overflow-hidden group list-none"
@@ -8,7 +11,7 @@ export function CardSlider({ title, image }) {
     >
       <Link to={`/category/${title.toLowerCase().replace(/\s+/g, "-")}`}>
         <h3 className="relative flex z-10 text-sky-950 bg-sky-200/65 justify-center p-2">
-          {title}
+          {t(title)}
         </h3>
         <picture>
           <img

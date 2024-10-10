@@ -3,11 +3,13 @@ import { useGetRecipes } from "../../hooks/useGetRecipes.js";
 import { Link } from "react-router-dom";
 import { useGetCountries } from "../../hooks/useCountries.js";
 import { Error } from "../Error.jsx";
+import { useTranslation } from "react-i18next";
 
 export function LastestRecipes() {
   const { getAllRecipes, error } = useGetRecipes();
   const recipes = getAllRecipes();
   const { getFlag } = useGetCountries();
+  const { t } = useTranslation();
 
   const listOfRecipes =
     recipes &&
@@ -55,7 +57,9 @@ export function LastestRecipes() {
 
   return (
     <section className="relative flex flex-col justify-center items-center w-full">
-      <h2 className="text-sky-950 font-bold text-3xl mb-6">Latest Recipes</h2>
+      <h2 className="text-sky-950 font-bold text-3xl mb-6">
+        {t("LatestRecipes")}
+      </h2>
       <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
         {recipes && recipes.length > 0 ? (
           listOfRecipes
@@ -68,7 +72,7 @@ export function LastestRecipes() {
         to="/recipes"
         className="text-xl font-normal uppercase bg-sky-800 text-sky-100 w-full p-6 hover:bg-sky-950 text-center"
       >
-        See all recipes
+        {t("AllRecipes")}
       </Link>
     </section>
   );

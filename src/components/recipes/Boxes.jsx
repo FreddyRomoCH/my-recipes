@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DB_URL } from "../../utils/constant";
+import { useTranslation } from "react-i18next";
 
 export function Boxes({
   title,
@@ -11,6 +12,8 @@ export function Boxes({
   username,
   is_active,
 }) {
+  const { t } = useTranslation();
+
   return (
     <div
       key={id}
@@ -56,19 +59,21 @@ export function Boxes({
 
         {!is_active ? (
           <p className="bg-gray-600 rounded text-sky-100 p-2 font-thin">
-            Waiting admin's activation
+            {t("WaitingAdmin")}
           </p>
         ) : (
           <Link
             to={`/recipes/${id}/${title.toLowerCase().replace(/\s/g, "-")}`}
             className="bg-sky-800 text-sky-100 rounded-md p-2 hover:bg-sky-950"
           >
-            Read More
+            {t("ReadMore")}
           </Link>
         )}
 
         {username && (
-          <p className="text-sky-950 font-thin">Posted By: {username}</p>
+          <p className="text-sky-950 font-thin">
+            {t("PostedBy")}: {username}
+          </p>
         )}
       </div>
     </div>
