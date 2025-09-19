@@ -34,9 +34,12 @@ const recipesSchema = z.object({
     }).max(20, {
         message: "Servings must be at most 20"
     }),
-    prep_time: z.string({
+    // prep_time: z.string({
+    //     required_error: "Prep time is required"
+    // }),
+    prep_time: z.number({
         required_error: "Prep time is required"
-    }),
+    }).int().positive(),
     country: z.string({
         required_error: "Country is required",
         parse_error: "Country must be a string"

@@ -1,5 +1,5 @@
 import { useAuth } from "../../hooks/useAuth.js";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, Navigate, useLocation } from "react-router-dom";
@@ -8,6 +8,7 @@ import { loginSchema } from "../../schema/users.js";
 import Input from "../form/Input.jsx";
 import ButtonForm from "../form/ButtonForm.jsx";
 import { APP_STATUS } from "../../utils/constant.js";
+import { useTranslation } from "react-i18next";
 
 export function Login() {
   const { isAuthenticated, loginUser } = useAuth();
@@ -17,6 +18,7 @@ export function Login() {
   const [password, setPassword] = useState(locationState?.password || "");
   const [formStatus, setFormStatus] = useState(APP_STATUS.IDLE);
   const logInBtnRef = useRef(null);
+  const { t } = useTranslation();
 
   const inputCss =
     "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
@@ -45,9 +47,9 @@ export function Login() {
     } catch (error) {
       setFormStatus(APP_STATUS.ERROR);
       setError("root", {
-        message: "Invalid email or password",
+        message: t("Invalid email or password"),
       });
-      toast.error("Invalid email or password");
+      toast.error(t("Invalid email or password"));
     }
   };
 
@@ -75,7 +77,7 @@ export function Login() {
       {isAuthenticated ? (
         <Navigate to="/profile" />
       ) : (
-        <h2 className="text-sky-950 font-bold text-3xl mb-10">Log In</h2>
+        <h2 className="text-sky-950 font-bold text-3xl mb-10">{t("Log In")}</h2>
       )}
 
       {!isAuthenticated && (
@@ -98,7 +100,7 @@ export function Login() {
             />
 
             <Input
-              label="Password"
+              label={t("Password")}
               error={errors.password}
               className={`${inputCss}
                 ${errors.password ? `${inputError}` : `${inputSuccess}`}`}
@@ -113,7 +115,9 @@ export function Login() {
             <ButtonForm
               ref={logInBtnRef}
               btnText={
-                formStatus === APP_STATUS.PENDING ? "Loading..." : "Log In"
+                formStatus === APP_STATUS.PENDING
+                  ? t("Loading...")
+                  : t("Log In")
               }
               error={errors.root}
               disabled={formStatus === APP_STATUS.PENDING}
@@ -124,7 +128,7 @@ export function Login() {
 
           <p className="text-base font-thin">
             <Link to="/register">
-              Register here if you do not have an account yet
+              {t("Register here if you do not have an account yet")}
             </Link>
           </p>
         </>

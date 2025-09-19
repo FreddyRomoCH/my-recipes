@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/authContext";
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 import { toast } from "sonner";
 import { apiLoginUser } from "../api/login.js";
 import { apiRegisterUser } from "../api/register.js";
@@ -51,7 +51,7 @@ export const useAuth = () => {
   }
 
   const handleLogout = async () => {
-    const response = await fetch(`${DB_URL}/users/logout`, {
+    const response = await fetch(`${API_URL}/users/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -68,7 +68,7 @@ export const useAuth = () => {
   
   const restoreSession = async () => {
     try {
-      const response = await fetch(`${DB_URL}/users/verify-token`, {
+      const response = await fetch(`${API_URL}/users/verify-token`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -84,7 +84,7 @@ export const useAuth = () => {
         const newAccessToken = await refreshToken();
 
         if (newAccessToken) {
-          const retryResponse = await fetch(`${DB_URL}/users/verify-token`, {
+          const retryResponse = await fetch(`${API_URL}/users/verify-token`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -108,7 +108,7 @@ export const useAuth = () => {
 
   const refreshToken = async () => {
     try {
-      const response = await fetch(`${DB_URL}/users/refresh-token`, {
+      const response = await fetch(`${API_URL}/users/refresh-token`, {
         method: 'POST',
         credentials: 'include',
         headers: {

@@ -1,27 +1,27 @@
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 
 export const apiLoginUser = async (loginDetails) => {
-  
-  return await fetch(`${DB_URL}/users/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginDetails),
-        credentials: "include",
-    })
-    .then(response => {
+  return await fetch(`${API_URL}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginDetails),
+    credentials: "include",
+  })
+    .then((response) => {
       if (!response.ok) {
-        return { error: "Login Error. Try again later" }
+        return { error: "Login Error. Try again later" };
       }
-
-      return response.json()
+      return response.json();
     })
-    .then(result => {
+    .then((result) => {
       if (result.error) {
-        return { error: result.error }
+        return { error: result.error };
       }
-
-      return { success: `User ${result.username} logged in successfully`, data: result };
-    })
+      return {
+        success: `User ${result.username} logged in successfully`,
+        data: result,
+      };
+    });
 };

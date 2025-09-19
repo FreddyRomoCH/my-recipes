@@ -1,4 +1,4 @@
-export const DB_URL = import.meta.env.VITE_DB_URL;
+// export const DB_URL = import.meta.env.VITE_DB_URL;
 // export const DB_URL = process.env.VITE_DB_URL || 'http://localhost:1234';
 export const MAX_FILE_SIZE = 5242880;
 export const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];

@@ -1,8 +1,8 @@
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 
 export const apiUpdateUser = async (updateDetails) => {
     try {
-        const response = await fetch(`${DB_URL}/users/${updateDetails.get('userId')}`, {
+        const response = await fetch(`${API_URL}/users/${updateDetails.get('userId')}`, {
           method: "PATCH",
           body: updateDetails,
         });

@@ -1,8 +1,8 @@
-import { DB_URL } from "../utils/constant"
+import { API_URL } from "../utils/config"
 
 export const postRecipes = async (formData) => {
     try {
-        const response = await fetch(`${DB_URL}/recipes`, {
+        const response = await fetch(`${API_URL}/recipes`, {
             method: "POST",
             body: formData,
         })

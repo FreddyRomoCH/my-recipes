@@ -20,7 +20,7 @@ export function MenuRight({ profileAvatar }) {
 
       {isAuthenticated && (
         <>
-          {userDetails.is_admin === 1 && (
+          {userDetails.is_admin && (
             <Navs href="/admin" title="Admin" key="admin" />
           )}
 

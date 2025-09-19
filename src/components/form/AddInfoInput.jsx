@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 export function AddInfoInput({
   title,
   type,
@@ -12,6 +14,8 @@ export function AddInfoInput({
   error,
   onKeyDown,
 }) {
+  const { t } = useTranslation();
+
   const handleCancel = (index) => {
     setState((prevState) => {
       const filteredState = prevState.filter((_, i) => i != index);
@@ -22,7 +26,7 @@ export function AddInfoInput({
   return (
     <>
       <div className="col-span-full mb-3">
-        <label htmlFor={inputID}>Add the {title} one by one</label>
+        <label htmlFor={inputID}>{t(`Add the ${title} one by one`)}</label>
       </div>
       <div className="col-span-full flex flex-row justify-between items-start gap-2">
         {/* Ingredients */}
@@ -93,7 +97,7 @@ export function AddInfoInput({
             ))
           ) : (
             <li className="text-sky-100 font-thin text-base">
-              No {title} added yet
+              {t(`No ${title} added yet`)}
             </li>
           )}
         </ul>

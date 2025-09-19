@@ -3,11 +3,13 @@ import { Boxes } from "./Boxes.jsx";
 import { useGetCountries } from "../../hooks/useCountries.js";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
+import { useTranslation } from "react-i18next";
 
 export function AllRecipes() {
   const { getAllRecipes, loading, error } = useGetRecipes();
   const recipes = getAllRecipes();
   const { getFlag } = useGetCountries();
+  const { t } = useTranslation();
 
   const recipesList =
     recipes &&
@@ -64,7 +66,7 @@ export function AllRecipes() {
     <main className="relative max-w-6xl mx-auto w-full">
       <>
         <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
-          All Recipes
+          {t("All Recipes")}
         </h2>
         <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
           {recipesList}

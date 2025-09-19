@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { CategoriesSlider } from "../slider/CategoriesSlider.jsx";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
+import { useTranslation } from "react-i18next";
 
 export function SingleCategory() {
   const [recipes, setRecipes] = useState([]);
   const { category } = useParams();
+  const { t } = useTranslation();
 
   const categoryName = category
     .toLowerCase()
@@ -82,7 +84,9 @@ export function SingleCategory() {
       {recipes && recipes.length > 0 ? (
         <>
           <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
-            {categoryName} Recipes
+            {categoryName === "All"
+              ? t("All Recipes")
+              : t("Category Recipes", { category: t(categoryName) })}
           </h2>
           <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
             {recipeList}
@@ -90,7 +94,7 @@ export function SingleCategory() {
         </>
       ) : (
         <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
-          No recipes found for {categoryName}
+          {t("No recipes found for", { category: t(categoryName) })}
         </h2>
       )}
     </main>

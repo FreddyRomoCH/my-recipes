@@ -34,7 +34,7 @@ export function MenuLeft() {
         </li>
       )}
 
-      {isAuthenticated && isMobile && userDetails.is_admin === 1 && (
+      {isAuthenticated && isMobile && userDetails.is_admin && (
         <Navs href="/admin" title="Admin" key="admin" />
       )}
     </>

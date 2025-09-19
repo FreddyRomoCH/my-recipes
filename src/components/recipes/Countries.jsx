@@ -5,6 +5,7 @@ import { useGetRecipes } from "../../hooks/useGetRecipes.js";
 import { Boxes } from "./Boxes.jsx";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
+import { useTranslation } from "react-i18next";
 
 export function Countries() {
   const { getAllCountries, getFlag, loadingCountries, errorCountries } =
@@ -14,6 +15,7 @@ export function Countries() {
   const [country, setCountry] = useState("");
   const [recipes, setRecipes] = useState([]);
   const countryId = useId();
+  const { t } = useTranslation();
 
   const flag = getFlag({ country });
 
@@ -36,7 +38,7 @@ export function Countries() {
   const renderRecipes =
     recipes.length === 0 && country ? (
       <p className="bg-sky-950 text-sky-100 text-lg font-light p-2 rounded">
-        {flag} - {country} has no recipes to show yet
+        {flag} - {country} {t("has no recipes to show yet")}
       </p>
     ) : (
       recipes
@@ -73,7 +75,7 @@ export function Countries() {
   if (loadingCountries) {
     return (
       <main className="relative max-w-6xl mx-auto w-full">
-        <Loading textLoaded="Loading countries..." />
+        <Loading textLoaded={t("Loading countries...")} />
       </main>
     );
   }
@@ -94,7 +96,7 @@ export function Countries() {
             className="text-sky-950 font-medium text-3xl my-6 text-center"
             htmlFor={countryId}
           >
-            Select a country
+            {t("Select a country")}
           </label>
 
           <div className={`${boxInput} my-3`}>

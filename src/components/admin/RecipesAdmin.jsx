@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { DB_URL } from "../../utils/constant";
+import { API_URL } from "../../utils/config";
 
 export function RecipesAdmin({
   thCss,
@@ -20,7 +20,8 @@ export function RecipesAdmin({
       <div className={`${thCss}`}>Created At</div>
       <div className={`${thCss}`}>Action</div>
 
-      {recipes.length > 0 &&
+      {Array.isArray(recipes) &&
+        recipes.length > 0 &&
         recipes.map((recipe) => {
           const { id, title, main_image, username, created_at, is_active } =
             recipe;
@@ -45,7 +46,7 @@ export function RecipesAdmin({
                 <picture>
                   <img
                     className="w-28 h-28 object-cover"
-                    src={`${DB_URL}/uploads/${main_image}`}
+                    src={`${API_URL}/uploads/${main_image}`}
                     alt={`Cover ${title}`}
                   />
                 </picture>

@@ -1,7 +1,7 @@
-import { DB_URL } from "../../utils/constant.js"
+import { API_URL } from "../../utils/config.js"
 
 export const categoriesList = async () => {
-  const response = await fetch(`${DB_URL}/categories`, {
+  const response = await fetch(`${API_URL}/categories`, {
     method: "GET",
     Headers: {
       "Content-Type": "application/json",

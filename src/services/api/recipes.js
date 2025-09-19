@@ -1,8 +1,8 @@
-import { DB_URL } from "../../utils/constant.js"
+import { API_URL } from "../../utils/config.js"
 
 // export const recipesList = async () => {
 //     try {
-//         const response = await fetch(`${DB_URL}/recipes`);
+//         const response = await fetch(`${API_URL}/recipes`);
 
 //         if (!response.ok) {
 //         return { error: response.error }
@@ -22,7 +22,7 @@ import { DB_URL } from "../../utils/constant.js"
 // }
 
 export const recipesList = async () => {
-  return await fetch(`${DB_URL}/recipes`)
+  return await fetch(`${API_URL}/recipes`)
     .then(res => {
       if (res.status >= 500 && res.status < 600) {
         return { error: "Server error" }

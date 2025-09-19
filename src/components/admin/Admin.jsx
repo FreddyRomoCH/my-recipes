@@ -77,7 +77,9 @@ export function Admin() {
 
     if (response && !response.error) {
       toast.success(response.success);
-      setRecipes(fetchRecipes());
+
+      const updatedRecipes = await fetchRecipes();
+      setRecipes(updatedRecipes);
     } else {
       toast.error(response.error);
     }
@@ -88,7 +90,9 @@ export function Admin() {
 
     if (response && !response.error) {
       toast.success(response.success);
-      setRecipes(fetchRecipes());
+
+      const updatedRecipes = await fetchRecipes();
+      setRecipes(updatedRecipes);
     } else {
       toast.error(response.error);
     }

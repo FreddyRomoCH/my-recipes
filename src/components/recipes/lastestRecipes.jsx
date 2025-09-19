@@ -58,7 +58,7 @@ export function LastestRecipes() {
   return (
     <section className="relative flex flex-col justify-center items-center w-full">
       <h2 className="text-sky-950 font-bold text-3xl mb-6">
-        {t("LatestRecipes")}
+        {t("NewestRecipes")}
       </h2>
       <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
         {recipes && recipes.length > 0 ? (

@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { addRecipeSchema } from "../../schema/recipes.js";
 import { postRecipes } from "../../api/createRecipes.js";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function AddRecipes() {
   const { getCategories, loading, error } = useCategories();
@@ -39,6 +40,7 @@ export function AddRecipes() {
   const ingredientsId = useId();
   const instructionsId = useId();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const listCategories = getCategories();
 
@@ -55,7 +57,7 @@ export function AddRecipes() {
       setIngredients((prevState) => [...prevState, ingredientInput]);
       setIngredientInput("");
     } else {
-      toast.error("Please add an ingredient");
+      toast.error(t("Please add an ingredient"));
     }
   };
 
@@ -68,7 +70,7 @@ export function AddRecipes() {
       setInstructions((prevState) => [...prevState, instructionsInput]);
       setInstructionsInput("");
     } else {
-      toast.error("Please add an instruction");
+      toast.error(t("Please add an instruction"));
     }
   };
 
@@ -116,6 +118,7 @@ export function AddRecipes() {
     const addRecipeData = {
       ...data,
       servings: parseInt(data.servings, 10),
+      prep_time: parseInt(data.prep_time, 10),
       categories: data.categories.map((category) => parseInt(category, 10)),
       ingredients: data.ingredients,
       instructions: data.instructions,
@@ -146,7 +149,8 @@ export function AddRecipes() {
         setFormStatus(APP_STATUS.SUCCESS);
         toast.success(response.success);
 
-        const { id, title } = response.data[0];
+        const { id } = response.data;
+        const { title } = addRecipeData;
 
         const formattedTitle = title.toLowerCase().replace(/ /g, "-");
 
@@ -177,11 +181,11 @@ export function AddRecipes() {
       <header className="mb-2">
         {formStatus === APP_STATUS.IDLE && (
           <h2 className="text-sky-950 font-bold text-3xl mb-6">
-            Add your new recipe
+            {t("Add your new recipe")}
           </h2>
         )}
 
-        {formStatus === APP_STATUS.PENDING && <h1>Loading...</h1>}
+        {formStatus === APP_STATUS.PENDING && <h1>{t("Loading...")}</h1>}
       </header>
 
       <section className="relative flex flex-col justify-center items-center w-full">
@@ -192,7 +196,7 @@ export function AddRecipes() {
         >
           <div className={`col-span-full ${boxInput}`}>
             <Input
-              label="Title"
+              label={t("Title")}
               error={errors.title}
               className={`${inputCss}
                     ${errors.title ? `${inputError}` : `${inputSuccess}`}`}
@@ -204,7 +208,7 @@ export function AddRecipes() {
 
           <div className={`col-span-full ${boxInput}`}>
             <Input
-              label="Description"
+              label={t("Description")}
               error={errors.description}
               className={`${inputCss}
                     ${
@@ -218,7 +222,7 @@ export function AddRecipes() {
 
           <div className={`${boxInput}`}>
             <Input
-              label="Recipe image"
+              label={t("Recipe image")}
               error={errors.main_image}
               className={`${inputCss}
             ${errors.main_image ? `${inputError}` : `${inputSuccess}`}`}
@@ -230,7 +234,7 @@ export function AddRecipes() {
           </div>
 
           <div className={`${boxInput}`}>
-            <label htmlFor={servingsId}>Servings</label>
+            <label htmlFor={servingsId}>{t("Servings")}</label>
             <Slider
               aria-label={servingsId}
               defaultValue={2}
@@ -252,25 +256,25 @@ export function AddRecipes() {
 
           <div className={`${boxInput}`}>
             <FormControl fullWidth>
-              <InputLabel id={prepTimeId}>Preparation Time</InputLabel>
+              <InputLabel id={prepTimeId}>{t("Preparation Time")}</InputLabel>
               <Select
                 labelId={prepTimeId}
                 id={prepTimeId}
                 value={prep_time}
-                label="Preparation Time"
+                label={t("Preparation Time")}
                 {...register("prep_time")}
                 onChange={handleChangePrepTime}
               >
-                <MenuItem value="Less than 10m">Less than 10m</MenuItem>
-                <MenuItem value="15m">15m</MenuItem>
-                <MenuItem value="30m">30m</MenuItem>
-                <MenuItem value="45m">45m</MenuItem>
-                <MenuItem value="1h">1h</MenuItem>
-                <MenuItem value="1h 15m">1h 15m</MenuItem>
-                <MenuItem value="1h 30m">1h 30m</MenuItem>
-                <MenuItem value="1h 45m">1h 45m</MenuItem>
-                <MenuItem value="2h">2h</MenuItem>
-                <MenuItem value="More than 2h">More than 2h</MenuItem>
+                <MenuItem value={10}>{t("Less than")} 10m</MenuItem>
+                <MenuItem value={15}>15m</MenuItem>
+                <MenuItem value={30}>30m</MenuItem>
+                <MenuItem value={45}>45m</MenuItem>
+                <MenuItem value={60}>1h</MenuItem>
+                <MenuItem value={75}>1h 15m</MenuItem>
+                <MenuItem value={90}>1h 30m</MenuItem>
+                <MenuItem value={105}>1h 45m</MenuItem>
+                <MenuItem value={120}>2h</MenuItem>
+                <MenuItem value={121}>{t("More than")} 2h</MenuItem>
               </Select>
             </FormControl>
 
@@ -283,12 +287,12 @@ export function AddRecipes() {
 
           <div className={`${boxInput}`}>
             <FormControl fullWidth>
-              <InputLabel id={countryId}>Country</InputLabel>
+              <InputLabel id={countryId}>{t("Country")}</InputLabel>
               <Select
                 labelId={countryId}
                 id={countryId}
                 value={country}
-                label="Country"
+                label={t("Couuntry")}
                 {...register("country")}
                 onChange={handleChangeCountry}
               >
@@ -309,11 +313,15 @@ export function AddRecipes() {
           </div>
 
           <div className={`col-span-full ${boxInput}`}>
-            {loading && <h2>Loading categories...</h2>}
-            {error && <h2>Error getting categories: {error}</h2>}
+            {loading && <h2>{t("Loading categories...")}</h2>}
+            {error && (
+              <h2>
+                {t("Error getting categories")}: {error}
+              </h2>
+            )}
             {listCategories.length > 0 ? (
               <>
-                <h3>Categories</h3>
+                <h3>{t("Categories")}</h3>
                 {listCategories.map((category) => {
                   const { name, id } = category;
 
@@ -321,14 +329,14 @@ export function AddRecipes() {
                     <FormControlLabel
                       key={id}
                       control={<Checkbox value={id} />}
-                      label={name}
+                      label={t(name)}
                       {...register("categories")}
                     />
                   );
                 })}
               </>
             ) : (
-              <p>No categories to select</p>
+              <p>{t("No categories to select")}</p>
             )}
 
             {errors.categories && (
@@ -383,7 +391,9 @@ export function AddRecipes() {
           <ButtonForm
             lastChild="true"
             btnText={
-              formStatus === APP_STATUS.PENDING ? "Loading..." : "Add Recipe"
+              formStatus === APP_STATUS.PENDING
+                ? t("Loading...")
+                : t("Add Recipe")
             }
             error={errors.root}
             type="submit"

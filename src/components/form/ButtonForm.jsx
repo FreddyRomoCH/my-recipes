@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 const ButtonForm = forwardRef(
-  ({ error, btnText, lastChild, ...props }, ref) => {
+  ({ error, btnText, lastChild, type = "submit", ...props }, ref) => {
     const lastChildCss = lastChild ? "col-span-2" : "";
 
     return (

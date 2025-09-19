@@ -7,9 +7,11 @@ import { onSubmitForm } from "../../services/onSubmitForm.js";
 import { toast } from "sonner";
 import Input from "../form/Input.jsx";
 import ButtonForm from "../form/ButtonForm.jsx";
+import { useTranslation } from "react-i18next";
 
 export function Register() {
   const { isAuthenticated, registerUser } = useAuth();
+  const { t } = useTranslation();
 
   const inputCss =
     "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
@@ -47,7 +49,7 @@ export function Register() {
         <Navigate to="/profile" />
       ) : (
         <h2 className="text-sky-950 font-bold text-3xl mb-10">
-          Register an account
+          {t("Register an account")}
         </h2>
       )}
 
@@ -69,7 +71,7 @@ export function Register() {
             />
 
             <Input
-              label="Password"
+              label={t("Password")}
               error={errors.password}
               className={`${inputCss}
                 ${errors.password ? `${inputError}` : `${inputSuccess}`}`}
@@ -79,7 +81,7 @@ export function Register() {
             />
 
             <Input
-              label="First Name"
+              label={t("First Name")}
               error={errors.first_name}
               className={`${inputCss}
                 ${errors.first_name ? `${inputError}` : `${inputSuccess}`}`}
@@ -89,7 +91,7 @@ export function Register() {
             />
 
             <Input
-              label="Last Name"
+              label={t("Last Name")}
               error={errors.last_name}
               className={`${inputCss}
                 ${errors.last_name ? `${inputError}` : `${inputSuccess}`}`}
@@ -99,7 +101,7 @@ export function Register() {
             />
 
             <Input
-              label="Username"
+              label={t("Username")}
               error={errors.username}
               className={`${inputCss}
                 ${errors.username ? `${inputError}` : `${inputSuccess}`}`}
@@ -109,7 +111,7 @@ export function Register() {
             />
 
             <Input
-              label="Country"
+              label={t("Country")}
               error={errors.country}
               className={`${inputCss}
                 ${errors.country ? `${inputError}` : `${inputSuccess}`}`}
@@ -119,7 +121,7 @@ export function Register() {
             />
 
             <Input
-              label="Profile Photo"
+              label={t("Profile Photo")}
               error={errors.profile_picture}
               className={`${inputCss}
                 ${
@@ -132,7 +134,7 @@ export function Register() {
             />
 
             <ButtonForm
-              btnText={isSubmitting ? "Loading..." : "Register"}
+              btnText={isSubmitting ? t("Loading...") : t("Register")}
               error={errors.root}
               disabled={isSubmitting}
               type="submit"
@@ -142,7 +144,7 @@ export function Register() {
 
           <p className="text-base font-thin">
             <Link to="/sign-in">
-              Log in here if you already have an account
+              {t("Log in here if you already have an account")}
             </Link>
           </p>
         </>

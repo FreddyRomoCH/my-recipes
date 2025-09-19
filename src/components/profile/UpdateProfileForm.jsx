@@ -86,7 +86,17 @@ export function UpdateProfileForm({
   const onSubmit = async (data) => {
     setAppStatus(APP_STATUS.PENDING);
 
-    if (dataToUpdate === userDetails) {
+    // if (dataToUpdate === userDetails) {
+    //   toast.message("Update the form to save changes");
+    //   setAppStatus(APP_STATUS.EDITING);
+    //   return;
+    // }
+
+    const isSameData = Object.keys(userDetails).every(
+      (key) => dataToUpdate[key] === userDetails[key]
+    );
+
+    if (isSameData) {
       toast.message("Update the form to save changes");
       setAppStatus(APP_STATUS.EDITING);
       return;
@@ -135,7 +145,7 @@ export function UpdateProfileForm({
       >
         <ButtonForm
           btnText={
-            appStatus === APP_STATUS.EDITING ? "Save Changes" : "Loading..."
+            appStatus === APP_STATUS.PENDING ? "Loading..." : "Save Changes"
           }
           error={errors.root}
           disabled={appStatus === APP_STATUS.PENDING}
@@ -203,7 +213,8 @@ export function UpdateProfileForm({
           autoComplete="country"
         />
 
-        <Input
+        {/* I wont ask for password update for now */}
+        {/* <Input
           label="Password"
           error={errors.password}
           className={`${inputCss}
@@ -212,7 +223,7 @@ export function UpdateProfileForm({
           lastChild="true"
           type="password"
           autoComplete="password"
-        />
+        /> */}
       </form>
     </main>
   );

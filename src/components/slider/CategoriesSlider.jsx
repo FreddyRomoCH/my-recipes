@@ -16,6 +16,7 @@ export function CategoriesSlider() {
     slidesToScroll: 1,
     swipe: false,
     swipeToSlide: false,
+    arrows: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -26,6 +27,7 @@ export function CategoriesSlider() {
           dots: true,
           swipe: false,
           swipeToSlide: false,
+          arrows: true,
         },
       },
       {
@@ -35,6 +37,7 @@ export function CategoriesSlider() {
           slidesToScroll: 1,
           swipe: true,
           swipeToSlide: true,
+          arrows: false,
         },
       },
     ],

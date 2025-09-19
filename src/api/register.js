@@ -1,8 +1,8 @@
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 
 export const apiRegisterUser = async (registerDetails) => {
     try {
-        const response = await fetch(`${DB_URL}/users/`, {
+        const response = await fetch(`${API_URL}/users/`, {
           method: "POST",
           body: registerDetails,
         });

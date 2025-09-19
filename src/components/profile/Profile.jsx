@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth.js";
 import { useState, useRef, useEffect } from "react";
-import { DB_URL, APP_STATUS } from "../../utils/constant.js";
+import { APP_STATUS } from "../../utils/constant.js";
 import { ProfileInfo } from "./ProfileInfo.jsx";
 import { ProfileYourRecipes } from "./ProfileYourRecipes.jsx";
 import { ProfileYourFavorites } from "./ProfileYourFavorites.jsx";

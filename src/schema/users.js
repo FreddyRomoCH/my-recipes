@@ -58,7 +58,6 @@ const schema = z.object({
   })
 
   export const updateSchema = schema.pick({
-    password: true,
     first_name: true,
     last_name: true,
     username: true,

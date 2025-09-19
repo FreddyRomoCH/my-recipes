@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 import { useAuth } from "./useAuth.js";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ export function useUser () {
         setLoading(true);
 
         try {
-            const response = await axios.get(`${DB_URL}/users`)
+            const response = await axios.get(`${API_URL}/users`)
 
             setUsers(response.data)
             return response.data
@@ -32,7 +32,7 @@ export function useUser () {
         // Get the user image from global state
         const profile_picture = userDetails && (userDetails.profile_picture === "" || userDetails.profile_picture === null)
           ? "/images/profile.jpg"
-          : `${DB_URL}/uploads/${userDetails?.profile_picture}`;
+          : `${API_URL}/uploads/${userDetails?.profile_picture}`;
 
           return profile_picture
     }

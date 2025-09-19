@@ -1,10 +1,10 @@
 import axios from "axios";
-import { DB_URL } from "../utils/constant";
+import { API_URL } from "../utils/config";
 
 export const acceptedRecipe = async (id) => {
     try {
       const response = await axios.patch(
-        `${DB_URL}/recipes/${id}`,
+        `${API_URL}/recipes/${id}`,
         {
           is_active: true,
         },
@@ -26,7 +26,7 @@ export const acceptedRecipe = async (id) => {
   export const deactivateRecipe = async (id) => {
     try {
       const response = await axios.patch(
-        `${DB_URL}/recipes/${id}`,
+        `${API_URL}/recipes/${id}`,
         {
           is_active: false,
         },

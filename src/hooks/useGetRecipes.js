@@ -39,7 +39,7 @@ export const useGetRecipes = () => {
       return null;
     }
 
-    return recipes.filter(recipe => recipe.country === country)
+    return recipes.filter(recipe => recipe.country === country && recipe.is_active)
   }
 
   const getRecipesByCategory = (category) => {
@@ -54,7 +54,7 @@ export const useGetRecipes = () => {
       return []
     }
 
-    return recipes.filter(recipe => recipe.categories.some(cat => cat === categoryName))
+    return recipes.filter(recipe => recipe.categories.some(cat => cat === categoryName) && recipe.is_active)
   }
 
   const getSingleRecipe = ({ id }) => {

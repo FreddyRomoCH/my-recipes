@@ -27,7 +27,7 @@ export function ProfileInfo({
         <ProfileData
           userDetails={userDetails}
           handleUpdate={handleUpdate}
-          btn_text={btn_text}
+          btn_text={btn_text} // solo se usa en modo IDLE
         />
       ) : (
         (appStatus === APP_STATUS.EDITING ||

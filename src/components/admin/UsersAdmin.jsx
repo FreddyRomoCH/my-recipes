@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { DB_URL } from "../../utils/constant";
+import { API_URL } from "../../utils/config";
 
 export function UsersAdmin({ thCss, tableCss, users }) {
   return (
@@ -36,7 +36,7 @@ export function UsersAdmin({ thCss, tableCss, users }) {
                 <picture>
                   <img
                     className="w-28 h-28 object-cover"
-                    src={`${DB_URL}/uploads/${profile_picture}`}
+                    src={`${API_URL}/uploads/${profile_picture}`}
                     alt={`Cover ${username}`}
                   />
                 </picture>
