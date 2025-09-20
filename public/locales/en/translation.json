@@ -11,6 +11,8 @@
     "Fish": "Fish",
     "Sea Food": "Sea Food",
     "Vegetarian": "Vegetarian",
+    "Vegan": "Vegan",
+    "Gluten Free": "Gluten Free",
     "Dessert": "Dessert",
     "Breakfast": "Breakfast",
     "Lunch": "Lunch",
@@ -67,5 +69,8 @@
     "Add the instructions one by one": "Add the instructions one by one",
     "No ingredients added yet": "No ingredients added yet",
     "No instructions added yet": "No instructions added yet",
-    "Add Recipe": "Add Recipe"
+    "Add Recipe": "Add Recipe",
+    "Update the form to save changes": "Update the form to save changes",
+    "Save Changes": "Save Changes",
+    "Update Profile": "Update Profile"
 }

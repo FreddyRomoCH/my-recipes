@@ -14,7 +14,7 @@ export function Register() {
   const { t } = useTranslation();
 
   const inputCss =
-    "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-52";
+    "flex-1 border-2  focus:ring-0 focus:outline-none rounded-md p-2 w-full md:w-52";
   const inputError = "border-red-500 hover:border-red-500 focus:border-red-500";
   const inputSuccess =
     "border-sky-900 hover:border-sky-500 focus:border-sky-500";

@@ -11,6 +11,8 @@
     "Fish": "Kala",
     "Sea Food": "",
     "Vegetarian": "Kasvisruoka",
+    "Vegan": "Vegaani",
+    "Gluten Free": "Gluteeniton",
     "Dessert": "Jälkiruoka",
     "Breakfast": "Aamupala",
     "Lunch": "Lounas",
@@ -68,5 +70,8 @@
     "Add the instructions one by one": "Lisää ohjeet yksi kerrallaan",
     "No ingredients added yet": "Ei lisättyjä ainesosia",
     "No instructions added yet": "Ei lisättyjä ohjeita",
-    "Add Recipe": "Lisää resepti"
+    "Add Recipe": "Lisää resepti",
+    "Update the form to save changes": "Päivitä lomake tallentaaksesi muutokset",
+    "Save Changes": "Tallenna muutokset",
+    "Update Profile": "Päivitä profiili"
 }

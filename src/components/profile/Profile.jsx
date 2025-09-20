@@ -6,6 +6,7 @@ import { ProfileInfo } from "./ProfileInfo.jsx";
 import { ProfileYourRecipes } from "./ProfileYourRecipes.jsx";
 import { ProfileYourFavorites } from "./ProfileYourFavorites.jsx";
 import { useUser } from "../../hooks/useUser.js";
+import { useTranslation } from "react-i18next";
 
 export function Profile() {
   const { isAuthenticated, userDetails } = useAuth();
@@ -13,6 +14,7 @@ export function Profile() {
   const profileRef = useRef();
   const [appStatus, setAppStatus] = useState(APP_STATUS.IDLE);
   const { getUserImage } = useUser();
+  const { t } = useTranslation();
 
   const profile_picture = getUserImage();
 
@@ -31,8 +33,11 @@ export function Profile() {
     setAppStatus(APP_STATUS.EDITING);
   };
 
+  const saveChanges = "Save Changes";
+  const UpdateProfile = "UpdateProfile";
+
   const btn_text =
-    appStatus === APP_STATUS.EDITING ? "Save Changes" : "Update Profile";
+    appStatus === APP_STATUS.EDITING ? t(saveChanges) : t(UpdateProfile);
 
   return (
     <main className="flex flex-col justify-between items-center gap-3 my-3">

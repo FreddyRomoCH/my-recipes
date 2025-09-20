@@ -7,6 +7,7 @@ import Input from "../form/Input";
 import ButtonForm from "../form/ButtonForm";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function UpdateProfileForm({
   setAppStatus,
@@ -16,6 +17,7 @@ export function UpdateProfileForm({
 }) {
   const { updateUser, userDetails, setUserDetails } = useAuth();
   const [dataToUpdate, setDataToUpdate] = useState(userDetails);
+  const { t } = useTranslation();
 
   const handleChangeUserFirstName = (e) => {
     setDataToUpdate((prevState) => {
@@ -97,7 +99,7 @@ export function UpdateProfileForm({
     );
 
     if (isSameData) {
-      toast.message("Update the form to save changes");
+      toast.message(t("Update the form to save changes"));
       setAppStatus(APP_STATUS.EDITING);
       return;
     }

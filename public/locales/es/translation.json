@@ -11,6 +11,8 @@
     "Fish": "Pescado",
     "Sea Food": "Mariscos",
     "Vegetarian": "Vegetariano",
+    "Vegan": "Vegano",
+    "Gluten Free": "Libre de Gluten",
     "Dessert": "Postre",
     "Breakfast": "Desayuno",
     "Lunch": "Almuerzo",
@@ -67,5 +69,8 @@
     "Add the instructions one by one": "Agrega las instrucciones una por una",
     "No ingredients added yet": "Aún no se han añadido ingredientes",
     "No instructions added yet": "Aún no se han añadido instrucciones",
-    "Add Recipe": "Agregar Receta"
+    "Add Recipe": "Agregar Receta",
+    "Update the form to save changes": "Actualiza el formulario para guardar cambios",
+    "Save Changes": "Guardar Cambios",
+    "Update Profile": "Actualizar Cuenta"
 }
