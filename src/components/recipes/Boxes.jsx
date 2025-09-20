@@ -24,7 +24,7 @@ export function Boxes({
       <div className="relative h-40 overflow-hidden">
         <div className="absolute z-10 top-[-100%] left-0 bg-sky-800/75 w-full flex flex-row flex-nowrap items-center justify-between px-1 group-hover:top-0 transition-[top] duration-500 ease-out">
           <p className="text-3xl">{flag}</p>
-          <ul className="flex flex-row justify-end gap-2">
+          <ul className="flex flex-row flex-wrap justify-end gap-2">
             {categories.map((category) => {
               return (
                 <li key={category} className="text-sm">

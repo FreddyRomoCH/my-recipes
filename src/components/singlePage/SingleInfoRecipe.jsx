@@ -24,6 +24,16 @@ export function SingleInfoRecipe({
       );
     });
 
+  // Helper function to format minutes as "X hr Y min"
+  function formatPrepTime(minutes) {
+    if (minutes < 60) return `${minutes} min.`;
+    const hrs = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return mins === 0
+      ? `${hrs} hr${hrs > 1 ? "s" : ""}`
+      : `${hrs} hr${hrs > 1 ? "s" : ""} ${mins} min.`;
+  }
+
   return (
     <>
       <h2 className="text-sky-950 font-bold text-3xl text-center">{title}</h2>
@@ -51,7 +61,7 @@ export function SingleInfoRecipe({
             <strong>Servings:</strong> {servings}
           </li>
           <li>
-            <strong>Prep Time:</strong> {prep_time}
+            <strong>Prep Time:</strong> {formatPrepTime(prep_time)}
           </li>
           <li>
             <strong>Country:</strong>{" "}
