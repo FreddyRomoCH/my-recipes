@@ -46,7 +46,7 @@ export function RecipesAdmin({
                 <picture>
                   <img
                     className="w-28 h-28 object-cover"
-                    src={`${API_URL}/uploads/${main_image}`}
+                    src={main_image}
                     alt={`Cover ${title}`}
                   />
                 </picture>

@@ -32,7 +32,7 @@ export function useUser () {
         // Get the user image from global state
         const profile_picture = userDetails && (userDetails.profile_picture === "" || userDetails.profile_picture === null)
           ? "/images/profile.jpg"
-          : `${API_URL}/uploads/${userDetails?.profile_picture}`;
+          : userDetails?.profile_picture;
 
           return profile_picture
     }

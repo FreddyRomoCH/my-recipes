@@ -36,7 +36,7 @@ export function UsersAdmin({ thCss, tableCss, users }) {
                 <picture>
                   <img
                     className="w-28 h-28 object-cover"
-                    src={`${API_URL}/uploads/${profile_picture}`}
+                    src={profile_picture}
                     alt={`Cover ${username}`}
                   />
                 </picture>
