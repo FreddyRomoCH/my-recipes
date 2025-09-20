@@ -34,7 +34,7 @@ export function Profile() {
   };
 
   const saveChanges = "Save Changes";
-  const UpdateProfile = "UpdateProfile";
+  const UpdateProfile = "Update Profile";
 
   const btn_text =
     appStatus === APP_STATUS.EDITING ? t(saveChanges) : t(UpdateProfile);

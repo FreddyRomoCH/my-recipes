@@ -38,7 +38,7 @@ export function Countries() {
   const renderRecipes =
     recipes.length === 0 && country ? (
       <p className="bg-sky-950 text-sky-100 text-lg font-light p-2 rounded">
-        {flag} - {country} {t("has no recipes to show yet")}
+        {flag} - {t(country)} {t("has no recipes to show yet")}
       </p>
     ) : (
       recipes
@@ -101,7 +101,7 @@ export function Countries() {
 
           <div className={`${boxInput} my-3`}>
             <FormControl fullWidth>
-              <InputLabel id={countryId}>Country</InputLabel>
+              <InputLabel id={countryId}>{t("Country")}</InputLabel>
               <Select
                 labelId={countryId}
                 id={countryId}
@@ -113,7 +113,7 @@ export function Countries() {
                   countries.map(({ name }) =>
                     name === "No specific country" ? null : (
                       <MenuItem value={name} key={name}>
-                        {name}
+                        {t(name)}
                       </MenuItem>
                     )
                   )}

@@ -156,7 +156,7 @@ export function UpdateProfileForm({
         />
 
         <Input
-          label="Update Photo"
+          label={t("Update Photo")}
           error={errors.profile_picture}
           className={`${inputCss}
             ${errors.profile_picture ? `${inputError}` : `${inputSuccess}`}`}
@@ -168,7 +168,7 @@ export function UpdateProfileForm({
         />
 
         <Input
-          label="First Name"
+          label={t("First Name")}
           error={errors.first_name}
           className={`${inputCss}
             ${errors.first_name ? `${inputError}` : `${inputSuccess}`}`}
@@ -180,7 +180,7 @@ export function UpdateProfileForm({
         />
 
         <Input
-          label="Last Name"
+          label={t("Last Name")}
           error={errors.last_name}
           className={`${inputCss}
             ${errors.last_name ? `${inputError}` : `${inputSuccess}`}`}
@@ -192,7 +192,7 @@ export function UpdateProfileForm({
         />
 
         <Input
-          label="Username"
+          label={t("Username")}
           error={errors.username}
           className={`${inputCss}
             ${errors.username ? `${inputError}` : `${inputSuccess}`}`}
@@ -204,7 +204,7 @@ export function UpdateProfileForm({
         />
 
         <Input
-          label="Country"
+          label={t("Country")}
           error={errors.country}
           className={`${inputCss}
             ${errors.country ? `${inputError}` : `${inputSuccess}`}`}

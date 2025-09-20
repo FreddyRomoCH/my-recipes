@@ -4,12 +4,14 @@ import { useGetCountries } from "../../hooks/useCountries.js";
 import { Boxes } from "../recipes/Boxes.jsx";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
+import { useTranslation } from "react-i18next";
 
 export function ProfileYourRecipes({ userDetails }) {
   const [recipes, setRecipes] = useState([]);
   const { getRecipesByUser, loading, error } = useGetRecipes();
   const { getFlag } = useGetCountries();
   const { id } = userDetails;
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!error || !loading) {
@@ -23,7 +25,7 @@ export function ProfileYourRecipes({ userDetails }) {
   if (loading) {
     return (
       <section className={`${sectionCSS}`}>
-        <Loading textLoaded="Loading your recipes..." />
+        <Loading textLoaded={t("Loading your recipes") + "..."} />
       </section>
     );
   }
@@ -66,12 +68,12 @@ export function ProfileYourRecipes({ userDetails }) {
         );
       })
     ) : (
-      <p>No recipes have been added yet</p>
+      <p>{t("No recipes have been added yet")}</p>
     );
 
   return (
     <section className={`${sectionCSS}`}>
-      <h2 className="text-2xl font-semibold mb-3">Your Recipes</h2>
+      <h2 className="text-2xl font-semibold mb-3">{t("Your Recipes")}</h2>
       <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
         {renderUserRecipes}
       </div>

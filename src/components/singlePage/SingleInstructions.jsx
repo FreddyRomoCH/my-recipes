@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export function SingleInstructions({ instructions }) {
+  const { t } = useTranslation();
   const listOfInstructions =
     instructions &&
     instructions.map((instruction, index) => {
@@ -7,7 +10,7 @@ export function SingleInstructions({ instructions }) {
           key={`intruction-${index}`}
           className="flex flex-col justify-start gap-4 items-center"
         >
-          <span className="text-lg font-semibold flex-shrink">{`Step ${
+          <span className="text-lg font-semibold flex-shrink">{`${t("Step")} ${
             index + 1
           }:`}</span>
           <p className="flex-1">{instruction}</p>
@@ -18,12 +21,12 @@ export function SingleInstructions({ instructions }) {
   return (
     <ul className="grow flex flex-col gap-4 box-border rounded font-thin">
       <li>
-        <span className="font-semibold text-lg">Instructions:</span>
+        <span className="font-semibold text-lg">{t("instructions")}:</span>
       </li>
       {listOfInstructions ? (
         listOfInstructions
       ) : (
-        <li>No instructions added yet</li>
+        <li>{t("No instructions added yet")}</li>
       )}
     </ul>
   );

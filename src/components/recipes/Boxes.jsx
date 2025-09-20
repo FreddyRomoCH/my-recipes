@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { API_URL } from "../../utils/config";
 import { useTranslation } from "react-i18next";
 
 export function Boxes({
@@ -33,9 +32,9 @@ export function Boxes({
                       .toLowerCase()
                       .replace(/\s/g, "-")}`}
                   >
-                    <span className=" font-thin text-sky-100 italic">
-                      {category}
-                    </span>
+                    <ul className="font-thin text-sky-100 italic">
+                      <li>{t(category)}</li>
+                    </ul>
                   </Link>
                 </li>
               );

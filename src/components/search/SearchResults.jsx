@@ -1,8 +1,10 @@
 import { useSearchRecipes } from "../../hooks/useSearchRecipes.js";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function SearchResults({ search, setSearch }) {
   const { recipes } = useSearchRecipes({ search });
+  const { t } = useTranslation();
 
   const handleClickMenu = () => {
     setSearch((prevState) => ({
@@ -17,7 +19,7 @@ export function SearchResults({ search, setSearch }) {
     <div className="results absolute top-14 z-40 w-full bg-sky-100 rounded p-3">
       <ul className="flex flex-col justify-start gap-1">
         {recipes.length === 0 ? (
-          <li>No results found</li>
+          <li>{t("No results found")}</li>
         ) : (
           recipes
             .filter((recipe) => recipe.is_active)

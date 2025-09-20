@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { SingleImage } from "./SingleImage";
+import { useTranslation } from "react-i18next";
 
 export function SingleInfoRecipe({
   categories,
@@ -12,13 +13,14 @@ export function SingleInfoRecipe({
   description,
   image,
 }) {
+  const { t } = useTranslation();
   const categoriesList =
     categories &&
     categories.map((category) => {
       return (
         <li key={category} className="font-thin text-sm">
           <Link to={`/category/${category.toLowerCase().replace(/\s/g, "-")}`}>
-            {category}
+            {t(category)}
           </Link>
         </li>
       );
@@ -34,13 +36,15 @@ export function SingleInfoRecipe({
       : `${hrs} hr${hrs > 1 ? "s" : ""} ${mins} min.`;
   }
 
+  const noCountry = "No specific";
+
   return (
     <>
       <h2 className="text-sky-950 font-bold text-3xl text-center">{title}</h2>
       <ul className="flex flex-row gap-2">{categoriesList}</ul>
 
       <h4 className="text-slate-950 font-light">
-        Posted by{" "}
+        {t("Posted by")}{" "}
         <Link
           className="bg-blue-900 text-sky-100 px-2 py-1 rounded-xl"
           to={"/recipes"}
@@ -58,14 +62,15 @@ export function SingleInfoRecipe({
         <p className="text-base font-medium mb-4">{description}</p>
         <ul className="flex flex-row justify-around gap-2 flex-wrap items-center">
           <li>
-            <strong>Servings:</strong> {servings}
+            <strong>{t("Servings")}:</strong> {servings}
           </li>
           <li>
-            <strong>Prep Time:</strong> {formatPrepTime(prep_time)}
+            <strong>{t("Preparation Time")}:</strong>{" "}
+            {formatPrepTime(prep_time)}
           </li>
           <li>
-            <strong>Country:</strong>{" "}
-            {country === "No specific country" ? "No specific" : country}
+            <strong>{t("Country")}:</strong>{" "}
+            {country === "No specific country" ? t(noCountry) : t(country)}
           </li>
         </ul>
       </section>

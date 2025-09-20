@@ -1,25 +1,39 @@
 import { useEffect, useState } from "react";
-// import { getRecipes } from "../services/api/recipes"
 import { useGetRecipes } from "./useGetRecipes";
+import { useTranslation } from "react-i18next";
 
 export function useSearchRecipes({ search }) {
-  const { getAllRecipes } = useGetRecipes() 
+  const { getAllRecipes } = useGetRecipes();
   const [recipes, setRecipes] = useState([]);
+  const { t } = useTranslation();
 
   const recipeList = getAllRecipes();
 
   useEffect(() => {
+    if (!search) {
+      setRecipes([]);
+      return;
+    }
+
+    const lowerSearch = search.toLowerCase();
+
     const matchedRecipes = recipeList.filter((recipe) => {
       const { title, categories, country } = recipe;
+
+      // traducir categorías antes de comparar
+      const translatedCategories = categories.map((cat) =>
+        t(cat).toLowerCase()
+      );
+
       return (
-        title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-        categories.find((category) => category.toLocaleLowerCase().includes(search.toLocaleLowerCase())) ||
-        country.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        title.toLowerCase().includes(lowerSearch) ||
+        translatedCategories.some((cat) => cat.includes(lowerSearch)) ||
+        country.toLowerCase().includes(lowerSearch)
       );
     });
 
     setRecipes(matchedRecipes);
-  }, [search]);
+  }, [search, recipeList, t]);
 
   return { recipes };
 }
