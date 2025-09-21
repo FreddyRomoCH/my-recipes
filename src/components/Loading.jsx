@@ -1,13 +1,11 @@
 import { lineSpinner } from "ldrs";
 lineSpinner.register();
 
-export function Loading() {
+export function Loading({ title }) {
   return (
-    <l-line-spinner
-      size="60"
-      stroke="8"
-      speed="1.6"
-      color="#0c4a6e"
-    ></l-line-spinner>
+    <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-gray-900"></div>
+      <p className="ml-4 text-lg">{title}</p>
+    </div>
   );
 }

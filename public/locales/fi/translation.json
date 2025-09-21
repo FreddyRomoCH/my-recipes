@@ -282,5 +282,6 @@
     "Search is too short": "Haku on liian lyhyt",
     "No results found": "Ei tuloksia löytynyt",
     "Search": "Haku",
-    "Translating": "Käännetään"
+    "Translating": "Käännetään",
+    "Starting server. This could get a few seconds...": "Käynnistetään palvelinta. Tämä voi kestää muutaman sekunnin..."
 }

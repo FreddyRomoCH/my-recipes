@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Header } from "./components/header/Header.jsx";
 import { Home } from "./components/home/Home.jsx";
 import { AllRecipes } from "./components/recipes/AllRecipes.jsx";
@@ -14,12 +15,42 @@ import { ProtectedRoute } from "./ProtectedRoute.jsx";
 import { AddRecipes } from "./components/recipes/AddRecipes.jsx";
 import { Countries } from "./components/recipes/Countries.jsx";
 import { Admin } from "./components/admin/Admin.jsx";
+import { useTranslation } from "react-i18next";
 import "./index.css";
+import { Loading } from "./components/Loading.jsx";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const pingBackend = async () => {
+      try {
+        const res = await fetch("https://recipesapi.freddyromo.dev", {
+          method: "GET",
+        });
+        if (res.ok) {
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      } catch (error) {
+        setTimeout(pingBackend, 2000);
+      }
+    };
+
+    pingBackend();
+  }, []);
+
   return (
     <>
       <Toaster position="top-center" richColors={true} />
+
+      {loading && (
+        <Loading
+          title={t("Starting server. This could get a few seconds...")}
+        />
+      )}
 
       <div className="grid grid-rows-[auto_1fr_auto] items-center text-center min-h-screen overflow-x-hidden">
         <AuthProvider>

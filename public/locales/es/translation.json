@@ -281,5 +281,6 @@
     "Search is too short": "Demasiado corto",
     "No results found": "Nada encontrado",
     "Search": "Buscar",
-    "Translating...": "Traduciendo"
+    "Translating...": "Traduciendo",
+    "Starting server. This could get a few seconds...": "Despertando al servidor. Puede tomar unos segundos"
 }
