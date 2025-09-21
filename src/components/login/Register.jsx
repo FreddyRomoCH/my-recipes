@@ -40,7 +40,7 @@ export function Register() {
       return;
     }
 
-    registerUser(result.data);
+    return registerUser(result.data);
   };
 
   return (
