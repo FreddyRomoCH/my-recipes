@@ -20,7 +20,7 @@ import "./index.css";
 import { Loading } from "./components/Loading.jsx";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [isServerAwake, setIsServerAwake] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -30,9 +30,9 @@ function App() {
           method: "GET",
         });
         if (res.ok) {
-          setLoading(false);
+          setIsServerAwake(false);
         } else {
-          setLoading(false);
+          setIsServerAwake(false);
         }
       } catch (error) {
         setTimeout(pingBackend, 2000);
@@ -46,7 +46,7 @@ function App() {
     <>
       <Toaster position="top-center" richColors={true} />
 
-      {loading && (
+      {isServerAwake && (
         <Loading
           title={t("Starting server. This could get a few seconds...")}
         />
