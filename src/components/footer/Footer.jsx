@@ -6,7 +6,7 @@ export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="relative w-full mx-auto flex flex-col items-center bg-sky-950 text-sky-100 p-6">
+    <footer className="relative w-full mx-auto flex flex-col items-center bg-base text-button p-6 text-lg font-inter">
       {/* {IS_DEVELOPMENT && <Debugger />} */}
       <nav>
         <ul className="font-light text-lg flex flex-row gap-3 justify-center items-center">

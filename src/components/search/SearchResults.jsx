@@ -16,7 +16,7 @@ export function SearchResults({ search, setSearch }) {
   };
 
   return (
-    <div className="results absolute top-14 z-40 w-full bg-sky-100 rounded p-3">
+    <div className="results absolute top-14 z-40 w-full bg-button text-gray-200 rounded p-3">
       <ul className="flex flex-col justify-start gap-1">
         {recipes.length === 0 ? (
           <li>{t("No results found")}</li>
@@ -27,7 +27,7 @@ export function SearchResults({ search, setSearch }) {
               const { id, title } = recipe;
 
               return (
-                <li key={recipe.id}>
+                <li key={recipe.id} className="hover:bg-hover">
                   <Link
                     to={`/recipes/${id}/${title
                       .toLocaleLowerCase()

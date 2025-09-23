@@ -1,9 +1,76 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-base: #FDF6ED; /*Fondo*/
+  --color-button: #713B1C; /* Botones y texto principal */
+  --color-hover: #D4743B; /* Hover general */
+  --color-card: #FFFFFF; /* Fondo tarjetas de recetas */
+  --color-secondary-text: #8C6D5D; /* Texto secundario */
+  --color-chip: #FFF2E4; /* color chip en categorias */
+
+  /* Fonts */
+  --font-lora: lora, serif;
+  --font-inter: Inter, serif;
+
+  /* Grids */
+  --grid-cols-boxes: repeat(auto-fit, minmax(500px, 1fr));
+  --grid-cols-myrecipes: repeat(auto-fit, minmax(480px, 1fr));
+
+  /* animations */
+  --animate-fade-out: fade-out 1.5s ease-out forwards;
+  --animate-slide-down: slide-down 0.3s ease-in-out forwards;
+  --animate-slide-up: slide-up 0.3s ease-in-out forwards;
+}
+
+.title-section {
+  @apply text-button font-medium text-3xl my-6 text-center font-lora
+}
 
 html {
-    font-family: 'Lato', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FDF6ED;
+}
+
+.slick-list {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 5px 0;
+  top: 35%
+}
+
+.slick-prev, .slick-next {
+  top: 35%
+}
+
+.slick-prev:before, .slick-next:before {
+    content: '→';
+    background: transparent;
+    color: #713B1C;
+}
+
+.slick-slide {
+  padding: 0 5px;
+}
+
+.slick-dots {
+  position: relative;
+  bottom: 0;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora/Lora-Variable.ttf') format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Variable.ttf') format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -66,6 +133,38 @@ html {
     form-sizing: content;
   }
 
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    75% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-2rem);
+    }
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
   @keyframes slide-down {
     0% {
       transform: scaleY(0);
@@ -82,13 +181,4 @@ html {
     100% {
       transform: scaleY(0);
     }
-  }
-
-  .slick-slide {
-    padding: 0 5px;
-  }
-
-  .slick-dots {
-    position: relative;
-    bottom: 0;
   }

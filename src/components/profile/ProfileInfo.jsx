@@ -13,7 +13,7 @@ export function ProfileInfo({
   btn_text,
 }) {
   return (
-    <header className="flex flex-col justify-center items-center gap-3 bg-sky-200 p-4 w-full max-w-5xl rounded-lg">
+    <header className="flex flex-col justify-center items-center gap-3 bg-chip p-4 w-full max-w-5xl rounded-lg">
       <picture>
         <img
           className="rounded-full w-56 h-56 object-cover"

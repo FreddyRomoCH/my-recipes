@@ -6,7 +6,7 @@ export function SingleImage({ country, image, title }) {
   const flag = getFlag({ country });
 
   return (
-    <div className="main-image relative h-80 w-full mb-4 overflow-hidden rounded">
+    <div className="main-image relative h-80 w-full mb-4 overflow-hidden rounded-2xl">
       <picture>
         <div className="absolute top-4 left-4 text-3xl z-10">{flag}</div>
         <img

@@ -71,10 +71,9 @@ export function UpdateProfileForm({
   };
 
   const inputCss =
-    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-52";
-  const inputError = "border-red-500 hover:border-red-500 focus:border-red-500";
-  const inputSuccess =
-    "border-sky-900 hover:border-sky-500 focus:border-sky-500";
+    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-52 bg-card text-secondary-text";
+  const inputError = "border-red-700 hover:border-red-700 focus:border-red-700";
+  const inputSuccess = "border-button hover:border-hover focus:border-hover";
 
   const {
     handleSubmit,
@@ -152,7 +151,7 @@ export function UpdateProfileForm({
           error={errors.root}
           disabled={appStatus === APP_STATUS.PENDING}
           type="submit"
-          className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
+          className="rounded-md bg-button hover:bg-hover px-5 py-2 mb-4 text-base text-md"
         />
 
         <Input

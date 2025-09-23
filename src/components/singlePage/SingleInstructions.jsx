@@ -8,9 +8,9 @@ export function SingleInstructions({ instructions }) {
       return (
         <li
           key={`intruction-${index}`}
-          className="flex flex-col justify-start gap-4 items-center"
+          className="flex flex-col justify-start gap-4 items-center font-inter"
         >
-          <span className="text-lg font-semibold flex-shrink">{`${t("Step")} ${
+          <span className="text-lg font-normal flex-shrink">{`${t("Step")} ${
             index + 1
           }:`}</span>
           <p className="flex-1">{instruction}</p>
@@ -21,7 +21,9 @@ export function SingleInstructions({ instructions }) {
   return (
     <ul className="grow flex flex-col gap-4 box-border rounded font-thin">
       <li>
-        <span className="font-semibold text-lg">{t("instructions")}:</span>
+        <span className="font-medium text-2xl font-lora">
+          {t("instructions")}:
+        </span>
       </li>
       {listOfInstructions ? (
         listOfInstructions

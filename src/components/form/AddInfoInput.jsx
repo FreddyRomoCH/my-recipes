@@ -66,17 +66,17 @@ export function AddInfoInput({
 
         <button
           type="button"
-          className="rounded-md bg-sky-950 px-5 py-2 text-sky-100 text-md"
+          className="rounded-md bg-button px-5 py-2 text-base text-md"
           onClick={onClick}
         >
           Add
         </button>
 
-        <ul className="bg-sky-950 p-2 rounded-md flex-1">
+        <ul className="bg-button p-2 rounded-md flex-1">
           {state.length > 0 ? (
             state.map((el, index) => (
               <li
-                className="text-sky-100 font-thin text-base flex flex-row justify-between items-center gap-2 mb-3"
+                className="text-base font-thin text-normal flex flex-row justify-between items-center gap-2 mb-3"
                 key={index}
               >
                 <p className="flex-1">{el}</p>
@@ -96,7 +96,7 @@ export function AddInfoInput({
               </li>
             ))
           ) : (
-            <li className="text-sky-100 font-thin text-base">
+            <li className="text-base font-thin text-normal font-inter">
               {t(`No ${title} added yet`)}
             </li>
           )}
