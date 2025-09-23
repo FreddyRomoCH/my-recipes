@@ -42,8 +42,14 @@ html {
   top: 35%
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-next:before {
     content: '→';
+    background: transparent;
+    color: #713B1C;
+}
+
+.slick-prev:before {
+    content: "←";
     background: transparent;
     color: #713B1C;
 }
