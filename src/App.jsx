@@ -30,7 +30,7 @@ function App() {
           method: "GET",
         });
         if (res.ok) {
-          setTimeout(() => setIsServerLoading(false), 2000);
+          setTimeout(() => setIsServerLoading(false), 1000);
         } else {
           setIsServerLoading(true);
         }
