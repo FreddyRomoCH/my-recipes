@@ -7,8 +7,8 @@ export function Navs({ title, href }) {
   return (
     <li
       className={`${
-        isActive && "bg-sky-950 text-sky-100"
-      } group font-medium italic py-3 text-lg`}
+        isActive && "bg-hover text-base"
+      } group font-lora py-3 text-lg font-light`}
     >
       <Link to={href}>{title}</Link>
       {/* {children && (

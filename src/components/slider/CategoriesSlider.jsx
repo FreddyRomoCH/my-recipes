@@ -12,8 +12,8 @@ export function CategoriesSlider() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 2,
     swipe: false,
     swipeToSlide: false,
     arrows: true,
@@ -21,8 +21,8 @@ export function CategoriesSlider() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
           swipe: false,

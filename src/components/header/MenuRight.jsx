@@ -24,7 +24,7 @@ export function MenuRight({ profileAvatar }) {
             <Navs href="/admin" title="Admin" key="admin" />
           )}
 
-          <li className="group font-medium italic py-3 text-lg">
+          <li className="group font-light font-lora py-3 text-lg">
             <button onClick={handleLogout}>{t("LogOut")}</button>
           </li>
           {profileAvatar}

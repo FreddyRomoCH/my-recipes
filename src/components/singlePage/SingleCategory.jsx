@@ -88,7 +88,7 @@ export function SingleCategory() {
               ? t("All Recipes")
               : t("Category Recipes", { category: t(categoryName) })}
           </h2>
-          <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
+          <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
             {recipeList}
           </div>
         </>

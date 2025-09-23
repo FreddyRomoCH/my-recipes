@@ -68,7 +68,7 @@ export function AllRecipes() {
         <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
           {t("All Recipes")}
         </h2>
-        <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
+        <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
           {recipesList}
         </div>
       </>

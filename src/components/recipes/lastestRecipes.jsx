@@ -49,31 +49,33 @@ export function LastestRecipes() {
 
   if (error) {
     return (
-      <h2 className="text-sky-950 font-medium text-3xl my-6 text-center">
+      <h2 className="text-button font-medium text-3xl my-6 text-center font-lora">
         <Error error={error} />
       </h2>
     );
   }
 
   return (
-    <section className="relative flex flex-col justify-center items-center w-full">
-      <h2 className="text-sky-950 font-bold text-3xl mb-6">
-        {t("NewestRecipes")}
-      </h2>
-      <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
-        {recipes && recipes.length > 0 ? (
-          listOfRecipes
-        ) : (
-          <p>No recipes have been added yet</p>
-        )}
-      </div>
+    <>
+      <section className="relative flex flex-col justify-center items-center w-full">
+        <h2 className="text-button font-medium text-3xl my-8 font-lora">
+          {t("NewestRecipes")}
+        </h2>
+        <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+          {recipes && recipes.length > 0 ? (
+            listOfRecipes
+          ) : (
+            <p>No recipes have been added yet</p>
+          )}
+        </div>
+      </section>
 
       <Link
         to="/recipes"
-        className="text-xl font-normal uppercase bg-sky-800 text-sky-100 w-full p-6 hover:bg-sky-950 text-center"
+        className="text-xl font-normal bg-button text-base p-6 hover:bg-hover text-center w-50"
       >
         {t("AllRecipes")}
       </Link>
-    </section>
+    </>
   );
 }

@@ -126,7 +126,7 @@ export function Countries() {
           {error ? (
             <Error error={error} />
           ) : (
-            <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
+            <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
               {renderRecipes}
             </div>
           )}

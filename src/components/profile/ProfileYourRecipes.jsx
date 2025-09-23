@@ -74,7 +74,7 @@ export function ProfileYourRecipes({ userDetails }) {
   return (
     <section className={`${sectionCSS}`}>
       <h2 className="text-2xl font-semibold mb-3">{t("Your Recipes")}</h2>
-      <div className="grid grid-cols-boxes gap-4 mb-6 w-full">
+      <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
         {renderUserRecipes}
       </div>
     </section>
