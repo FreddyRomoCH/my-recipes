@@ -44,7 +44,7 @@ export function CategoriesSlider() {
   };
 
   return (
-    <div className="relative w-screen lg:w-full mb-3">
+    <div className="relative w-screen lg:w-full">
       {categories.length > 0 && (
         <Slider {...settings}>
           {categories &&
