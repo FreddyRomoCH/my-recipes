@@ -14,7 +14,7 @@ export function HeaderDesktop({ profileAvatar }) {
         </nav>
 
         <Link to="/">
-          <RecipeLogo widthLogo="w-24" color="#082f49" />
+          <RecipeLogo widthLogo="w-24" color="#713B1C" />
         </Link>
 
         <nav className="flex-1">
