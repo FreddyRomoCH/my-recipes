@@ -74,7 +74,7 @@ export function ProfileYourRecipes({ userDetails }) {
   return (
     <section className={`${sectionCSS}`}>
       <h2 className="title-section">{t("Your Recipes")}</h2>
-      <div className="grid  grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-(--grid-cols-myrecipes) gap-4 mb-6 w-full px-2.5 md:p-0">
         {renderUserRecipes}
       </div>
     </section>
