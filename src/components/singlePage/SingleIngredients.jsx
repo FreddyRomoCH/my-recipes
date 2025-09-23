@@ -5,13 +5,19 @@ export function SingleIngredients({ ingredients }) {
   const listOfIngredients =
     ingredients &&
     ingredients.map((ingredient, index) => {
-      return <li key={`ingredient-${index}`}>- {ingredient}</li>;
+      return (
+        <li key={`ingredient-${index}`} className="font-inter">
+          - {ingredient}
+        </li>
+      );
     });
 
   return (
-    <ul className="shrink flex flex-col gap-4 bg-sky-950 text-sky-100 p-4 box-border rounded font-thin">
+    <ul className="shrink flex flex-col gap-4 bg-button text-base p-4 box-border rounded font-thin">
       <li>
-        <span className="font-semibold text-lg">{t("ingredients")}:</span>
+        <span className="font-medium text-2xl font-lora text-base">
+          {t("ingredients")}:
+        </span>
       </li>
       {listOfIngredients ? (
         listOfIngredients

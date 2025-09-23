@@ -20,7 +20,7 @@ export function ProfileYourRecipes({ userDetails }) {
     }
   }, [loading, error, id]);
 
-  const sectionCSS = `flex flex-col justify-center items-center gap-3 bg-sky-200 p-4 w-full max-w-5xl rounded-lg`;
+  const sectionCSS = `flex flex-col justify-center items-center gap-3 bg-chip p-4 w-full max-w-5xl rounded-lg`;
 
   if (loading) {
     return (
@@ -73,8 +73,8 @@ export function ProfileYourRecipes({ userDetails }) {
 
   return (
     <section className={`${sectionCSS}`}>
-      <h2 className="text-2xl font-semibold mb-3">{t("Your Recipes")}</h2>
-      <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+      <h2 className="title-section">{t("Your Recipes")}</h2>
+      <div className="grid  grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
         {renderUserRecipes}
       </div>
     </section>

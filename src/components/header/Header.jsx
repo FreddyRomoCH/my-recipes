@@ -23,7 +23,7 @@ export function Header() {
       <Link to="/profile">
         <picture>
           <img
-            className="rounded-full w-12 h-12 object-cover"
+            className="rounded-full w-12 h-12 object-cover border-2 border-green-400"
             src={profile_picture}
             alt={`Profile ${userDetails?.username} `}
           />

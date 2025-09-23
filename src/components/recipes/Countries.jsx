@@ -37,7 +37,7 @@ export function Countries() {
 
   const renderRecipes =
     recipes.length === 0 && country ? (
-      <p className="bg-sky-950 text-sky-100 text-lg font-light p-2 rounded">
+      <p className="bg-button text-gray-200 text-lg font-inter font-light p-2 rounded">
         {flag} - {t(country)} {t("has no recipes to show yet")}
       </p>
     ) : (
@@ -70,7 +70,7 @@ export function Countries() {
         })
     );
 
-  const boxInput = "bg-sky-100 p-2 rounded-md";
+  const boxInput = "bg-card text-button p-2 rounded-md";
 
   if (loadingCountries) {
     return (
@@ -92,10 +92,7 @@ export function Countries() {
     <main className="relative max-w-6xl mx-auto w-full">
       {
         <>
-          <label
-            className="text-sky-950 font-medium text-3xl my-6 text-center"
-            htmlFor={countryId}
-          >
+          <label className="title-section" htmlFor={countryId}>
             {t("Select a country")}
           </label>
 
@@ -126,7 +123,7 @@ export function Countries() {
           {error ? (
             <Error error={error} />
           ) : (
-            <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
               {renderRecipes}
             </div>
           )}

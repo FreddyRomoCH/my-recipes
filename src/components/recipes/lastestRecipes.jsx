@@ -49,7 +49,7 @@ export function LastestRecipes() {
 
   if (error) {
     return (
-      <h2 className="text-button font-medium text-3xl my-6 text-center font-lora">
+      <h2 className="title-section">
         <Error error={error} />
       </h2>
     );
@@ -61,7 +61,7 @@ export function LastestRecipes() {
         <h2 className="text-button font-medium text-3xl my-8 font-lora">
           {t("NewestRecipes")}
         </h2>
-        <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
           {recipes && recipes.length > 0 ? (
             listOfRecipes
           ) : (
@@ -72,7 +72,7 @@ export function LastestRecipes() {
 
       <Link
         to="/recipes"
-        className="text-xl font-normal bg-button text-base p-6 hover:bg-hover text-center w-50"
+        className="text-xl font-normal bg-button text-base p-4 hover:bg-hover text-center w-60 m-auto rounded-2xl my-5"
       >
         {t("AllRecipes")}
       </Link>

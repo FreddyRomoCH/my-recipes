@@ -12,7 +12,10 @@ const Input = forwardRef(({ label, error, lastChild, ...props }, ref) => {
       {lastChild && (
         <h3 className="mt-3">Enter your password to save changes</h3>
       )}
-      <label className="flex-1" htmlFor={inputId}>
+      <label
+        className="flex-1 text-button font-inter text-lg"
+        htmlFor={inputId}
+      >
         {label}
       </label>
 
@@ -31,7 +34,9 @@ const Input = forwardRef(({ label, error, lastChild, ...props }, ref) => {
       )}
 
       {error && (
-        <span className="text-sm font-thin text-red-500">{error.message}</span>
+        <span className="text-sm font-inter font-thin text-red-700">
+          {error.message}
+        </span>
       )}
     </div>
   );

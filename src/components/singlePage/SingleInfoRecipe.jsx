@@ -16,12 +16,21 @@ export function SingleInfoRecipe({
   const { t } = useTranslation();
   const categoriesList =
     categories &&
-    categories.map((category) => {
+    categories.map((category, index) => {
+      const isLast = index === categories.length - 1;
       return (
-        <li key={category} className="font-thin text-sm">
+        <li
+          key={`${category}-${index}`}
+          className="font-light font-lora text-sm text-secondary-text flex items-center"
+        >
           <Link to={`/category/${category.toLowerCase().replace(/\s/g, "-")}`}>
             {t(category)}
           </Link>
+          {!isLast && (
+            <span className="mx-2 text-secondary-text" aria-hidden>
+              ·
+            </span>
+          )}
         </li>
       );
     });
@@ -40,13 +49,15 @@ export function SingleInfoRecipe({
 
   return (
     <>
-      <h2 className="text-sky-950 font-bold text-3xl text-center">{title}</h2>
-      <ul className="flex flex-row gap-2">{categoriesList}</ul>
+      <h2 className="title-section mb-20">{title}</h2>
+      <ul className="flex flex-row gap-2 text-secondary-text">
+        {categoriesList}
+      </ul>
 
-      <h4 className="text-slate-950 font-light">
+      <h4 className="text-slate-950 font-light m-3">
         {t("Posted by")}{" "}
         <Link
-          className="bg-blue-900 text-sky-100 px-2 py-1 rounded-xl"
+          className="bg-button text-base px-2 font-lora py-1 rounded-xl"
           to={"/recipes"}
           state={{
             user_id: user_id,
@@ -58,8 +69,10 @@ export function SingleInfoRecipe({
 
       <SingleImage country={country} image={image} title={title} />
 
-      <section className="information rounded bg-sky-100 text-sky-950 w-full mb-4 p-4">
-        <p className="text-base font-medium mb-4">{description}</p>
+      <section className="information rounded-2xl bg-chip text-secondary-text w-full mb-4 p-4">
+        <p className="text-secondary-text font-inter font-medium mb-4">
+          {description}
+        </p>
         <ul className="flex flex-row justify-around gap-2 flex-wrap items-center">
           <li>
             <strong>{t("Servings")}:</strong> {servings}

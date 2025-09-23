@@ -14,6 +14,7 @@
 
   /* Grids */
   --grid-cols-boxes: repeat(auto-fit, minmax(500px, 1fr));
+  --grid-cols-myrecipes: repeat(auto-fit, minmax(480px, 1fr));
 
   /* animations */
   --animate-fade-out: fade-out 1.5s ease-out forwards;
@@ -21,8 +22,12 @@
   --animate-slide-up: slide-up 0.3s ease-in-out forwards;
 }
 
+.title-section {
+  @apply text-button font-medium text-3xl my-6 text-center font-lora
+}
+
 html {
-    font-family: 'Lato', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     background-color: #FDF6ED;
 }
 
@@ -41,6 +46,15 @@ html {
     content: '→';
     background: transparent;
     color: #713B1C;
+}
+
+.slick-slide {
+  padding: 0 5px;
+}
+
+.slick-dots {
+  position: relative;
+  bottom: 0;
 }
 
 @font-face {
@@ -167,13 +181,4 @@ html {
     100% {
       transform: scaleY(0);
     }
-  }
-
-  .slick-slide {
-    padding: 0 5px;
-  }
-
-  .slick-dots {
-    position: relative;
-    bottom: 0;
   }

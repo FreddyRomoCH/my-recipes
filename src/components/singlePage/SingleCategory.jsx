@@ -83,17 +83,17 @@ export function SingleCategory() {
 
       {recipes && recipes.length > 0 ? (
         <>
-          <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
+          <h2 className="title-section">
             {categoryName === "All"
               ? t("All Recipes")
               : t("Category Recipes", { category: t(categoryName) })}
           </h2>
-          <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
             {recipeList}
           </div>
         </>
       ) : (
-        <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
+        <h2 className="title-section">
           {t("No recipes found for", { category: t(categoryName) })}
         </h2>
       )}

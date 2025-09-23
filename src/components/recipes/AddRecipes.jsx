@@ -169,20 +169,17 @@ export function AddRecipes() {
   };
 
   const inputCss =
-    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-full resize-y formSizingContent";
-  const inputError = "border-red-500 hover:border-red-500 focus:border-red-500";
-  const inputSuccess =
-    "border-sky-900 hover:border-sky-500 focus:border-sky-500";
+    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-full resize-y formSizingContent bg-card";
+  const inputError = "border-red-700 hover:border-red-700 focus:border-red-700";
+  const inputSuccess = "border-button hover:border-hover focus:border-hover";
 
-  const boxInput = "bg-sky-100 p-2 rounded-md";
+  const boxInput = "bg-chip p-2 rounded-md";
 
   return (
     <main className="flex flex-col w-full max-w-6xl mx-auto my-3">
       <header className="mb-2">
         {formStatus === APP_STATUS.IDLE && (
-          <h2 className="text-sky-950 font-bold text-3xl mb-6">
-            {t("Add your new recipe")}
-          </h2>
+          <h2 className="title-section">{t("Add your new recipe")}</h2>
         )}
 
         {formStatus === APP_STATUS.PENDING && <h1>{t("Loading...")}</h1>}
@@ -248,7 +245,7 @@ export function AddRecipes() {
             />
 
             {errors.servings && (
-              <span className="text-sm font-thin text-red-500">
+              <span className="text-sm font-thin text-red-700">
                 {errors.servings.message}
               </span>
             )}
@@ -264,6 +261,7 @@ export function AddRecipes() {
                 label={t("Preparation Time")}
                 {...register("prep_time")}
                 onChange={handleChangePrepTime}
+                className="bg-card"
               >
                 <MenuItem value={10}>{t("Less than")} 10m</MenuItem>
                 <MenuItem value={15}>15m</MenuItem>
@@ -279,7 +277,7 @@ export function AddRecipes() {
             </FormControl>
 
             {errors.prep_time && (
-              <span className="text-sm font-thin text-red-500">
+              <span className="text-sm font-thin text-red-700">
                 {errors.prep_time.message}
               </span>
             )}
@@ -295,6 +293,7 @@ export function AddRecipes() {
                 label={t("Couuntry")}
                 {...register("country")}
                 onChange={handleChangeCountry}
+                className="bg-card"
               >
                 {getAllCountries &&
                   getAllCountries.map(({ name }) => (
@@ -306,7 +305,7 @@ export function AddRecipes() {
             </FormControl>
 
             {errors.country && (
-              <span className="text-sm font-thin text-red-500">
+              <span className="text-sm font-thin text-red-700">
                 {errors.country.message}
               </span>
             )}
@@ -340,7 +339,7 @@ export function AddRecipes() {
             )}
 
             {errors.categories && (
-              <span className="text-sm font-thin text-red-500">
+              <span className="text-sm font-thin text-red-700">
                 {errors.categories.message}
               </span>
             )}
@@ -398,7 +397,7 @@ export function AddRecipes() {
             error={errors.root}
             type="submit"
             disabled={formStatus === APP_STATUS.PENDING}
-            className="rounded-md bg-sky-950 px-5 py-2 text-sky-200 text-md"
+            className="rounded-md bg-button font-inter px-5 py-2 text-base text-md"
           />
         </form>
       </section>

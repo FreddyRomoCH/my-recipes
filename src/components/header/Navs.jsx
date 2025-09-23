@@ -8,7 +8,7 @@ export function Navs({ title, href }) {
     <li
       className={`${
         isActive && "bg-hover text-base"
-      } group font-lora py-3 text-lg font-light`}
+      } group font-lora py-3 text-md md:text-lg font-light`}
     >
       <Link to={href}>{title}</Link>
       {/* {children && (

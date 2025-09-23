@@ -59,7 +59,7 @@ export function SingleRecipe() {
           image={image}
         />
 
-        <section className="preparation rounded bg-sky-100 text-sky-950 w-full mb-4 p-4">
+        <section className="preparation rounded-2xl bg-chip text-secondary-text w-full mb-4 p-4">
           <div className="information flex flex-col md:flex-row justify-center gap-6">
             <SingleIngredients ingredients={ingredients} />
 

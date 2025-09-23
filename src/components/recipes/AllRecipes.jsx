@@ -65,10 +65,8 @@ export function AllRecipes() {
   return (
     <main className="relative max-w-6xl mx-auto w-full">
       <>
-        <h2 className="text-sky-950 font-bold text-3xl my-6 text-center">
-          {t("All Recipes")}
-        </h2>
-        <div className="grid grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full">
+        <h2 className="title-section">{t("All Recipes")}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-(--grid-cols-boxes) gap-4 mb-6 w-full px-2.5 md:p-0">
           {recipesList}
         </div>
       </>
