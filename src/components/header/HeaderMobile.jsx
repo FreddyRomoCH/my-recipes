@@ -36,7 +36,7 @@ export function HeaderMobile({ profileAvatar }) {
       </div>
       <div className="flex flex-1 justify-center">
         <Link to="/">
-          <RecipeLogo widthLogo="w-16" color="#713B1C" />
+          <RecipeLogo widthLogo="w-16" color="#FDF6ED" />
         </Link>
       </div>
       <div className="flex justify-center flex-1">
