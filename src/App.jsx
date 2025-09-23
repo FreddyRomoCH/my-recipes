@@ -16,11 +16,11 @@ import { AddRecipes } from "./components/recipes/AddRecipes.jsx";
 import { Countries } from "./components/recipes/Countries.jsx";
 import { Admin } from "./components/admin/Admin.jsx";
 import { useTranslation } from "react-i18next";
-import "./index.css";
 import { Loading } from "./components/Loading.jsx";
+import "./index.css";
 
 function App() {
-  const [isServerAwake, setIsServerAwake] = useState(true);
+  const [isServerLoading, setIsServerLoading] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -30,9 +30,9 @@ function App() {
           method: "GET",
         });
         if (res.ok) {
-          setIsServerAwake(false);
+          setTimeout(() => setIsServerLoading(false), 2000);
         } else {
-          setIsServerAwake(false);
+          setIsServerLoading(true);
         }
       } catch (error) {
         setTimeout(pingBackend, 2000);
@@ -46,7 +46,7 @@ function App() {
     <>
       <Toaster position="top-center" richColors={true} />
 
-      {isServerAwake && (
+      {isServerLoading && (
         <Loading
           title={t("Starting server. This could get a few seconds...")}
         />
