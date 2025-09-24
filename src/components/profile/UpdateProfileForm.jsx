@@ -71,7 +71,7 @@ export function UpdateProfileForm({
   };
 
   const inputCss =
-    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-52 bg-card text-secondary-text";
+    "flex-1 border-2 focus:ring-0 focus:outline-none rounded-md p-2 bg-card w-4/5 text-secondary-text font-md font-inter text-md font-medium";
   const inputError = "border-red-700 hover:border-red-700 focus:border-red-700";
   const inputSuccess = "border-button hover:border-hover focus:border-hover";
 
@@ -138,9 +138,9 @@ export function UpdateProfileForm({
   };
 
   return (
-    <main className="relative flex flex-col justify-center items-center">
+    <main className="relative flex flex-col justify-center items-center w-4/5">
       <form
-        className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 [&>div]:col-span-2 sm:[&>div:not(:first-child)]:col-span-1"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 [&>div]:col-span-2 sm:[&>div:not(:first-child)]:col-span-1 w-full"
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
       >
@@ -151,7 +151,7 @@ export function UpdateProfileForm({
           error={errors.root}
           disabled={appStatus === APP_STATUS.PENDING}
           type="submit"
-          className="rounded-md bg-button hover:bg-hover px-5 py-2 mb-4 text-base text-md"
+          className="rounded-md bg-button hover:bg-hover px-5 py-2 mb-4 text-base text-md cursor-pointer"
         />
 
         <Input

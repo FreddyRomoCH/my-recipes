@@ -54,7 +54,7 @@ export function SingleInfoRecipe({
         {categoriesList}
       </ul>
 
-      <h4 className="text-slate-950 font-light m-3">
+      <h4 className="text-secondary-text font-light m-3">
         {t("Posted by")}{" "}
         <Link
           className="bg-button text-base px-2 font-lora py-1 rounded-xl"

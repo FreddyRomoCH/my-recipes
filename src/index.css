@@ -63,6 +63,25 @@ html {
   bottom: 0;
 }
 
+.css-18pjc51-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #713B1C !important;
+}
+
+.category-checkbox .MuiCheckbox-root {
+  color: #713B1C;
+}
+
+.category-checkbox .css-1y5vrnu-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-1y5vrnu-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  color: #713B1C;
+}
+
+.category-checkbox .MuiTypography-root {
+  color: #8C6D5D;
+  font-family: 'Inter';
+  font-size: medium;
+  font-weight: 300;
+}
+
 @font-face {
   font-family: 'Lora';
   src: url('/fonts/Lora/Lora-Variable.ttf') format("truetype");

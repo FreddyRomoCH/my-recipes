@@ -24,6 +24,7 @@ export function HeaderMobile({ profileAvatar }) {
           <img
             src={`${isMobileMenuOpen ? menuCloseLogo : menuLogo}`}
             alt="MENU"
+            className="h-15"
           />
         </picture>
         <div

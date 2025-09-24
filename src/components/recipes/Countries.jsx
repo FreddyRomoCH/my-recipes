@@ -6,6 +6,8 @@ import { Boxes } from "./Boxes.jsx";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { UtensilsIcon } from "./UtensilsIcon.jsx";
 
 export function Countries() {
   const { getAllCountries, getFlag, loadingCountries, errorCountries } =
@@ -37,9 +39,18 @@ export function Countries() {
 
   const renderRecipes =
     recipes.length === 0 && country ? (
-      <p className="bg-button text-gray-200 text-lg font-inter font-light p-2 rounded">
-        {flag} - {t(country)} {t("has no recipes to show yet")}
-      </p>
+      <div className="flex flex-col justify-center items-center gap-3 bg-card border border-chip p-5 rounded-lg w-max-xl md:w-xl m-auto">
+        <UtensilsIcon widthLogo="w-12" color="text-button" fill="#713B1C" />
+        <p className="text-button text-md font-inter font-light">
+          {flag} - {t(country)} {t("has no recipes to show yet")}
+        </p>
+        <Link
+          to="/recipes"
+          className="text-sm font-light font-inter bg-button text-base px-4 py-2 hover:bg-hover text-center m-auto rounded-lg"
+        >
+          {t("AllRecipes")}
+        </Link>
+      </div>
     ) : (
       recipes
         .filter((recipe) => recipe.is_active)
@@ -70,7 +81,7 @@ export function Countries() {
         })
     );
 
-  const boxInput = "bg-card text-button p-2 rounded-md";
+  const boxInput = "bg-card text-button p-2 rounded-md max-w-xl m-auto";
 
   if (loadingCountries) {
     return (

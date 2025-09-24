@@ -72,7 +72,7 @@ export function LastestRecipes() {
 
       <Link
         to="/recipes"
-        className="text-xl font-normal bg-button text-base p-4 hover:bg-hover text-center w-60 m-auto rounded-2xl my-5"
+        className="text-xl font-normal bg-button text-base px-6 py-4 hover:bg-hover text-center m-auto rounded-lg my-5"
       >
         {t("AllRecipes")}
       </Link>

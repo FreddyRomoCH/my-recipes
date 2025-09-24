@@ -13,7 +13,7 @@ const Input = forwardRef(({ label, error, lastChild, ...props }, ref) => {
         <h3 className="mt-3">Enter your password to save changes</h3>
       )}
       <label
-        className="flex-1 text-button font-inter text-lg"
+        className="flex-1 text-button font-inter text-md font-medium"
         htmlFor={inputId}
       >
         {label}

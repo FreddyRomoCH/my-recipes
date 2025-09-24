@@ -10,10 +10,10 @@ export function SingleInstructions({ instructions }) {
           key={`intruction-${index}`}
           className="flex flex-col justify-start gap-4 items-center font-inter"
         >
-          <span className="text-lg font-normal flex-shrink">{`${t("Step")} ${
+          <span className="text-lg font-medium flex-shrink">{`${t("Step")} ${
             index + 1
           }:`}</span>
-          <p className="flex-1">{instruction}</p>
+          <p className="flex-1 font-normal font-inter">{instruction}</p>
         </li>
       );
     });

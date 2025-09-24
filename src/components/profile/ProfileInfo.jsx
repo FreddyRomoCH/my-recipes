@@ -16,7 +16,7 @@ export function ProfileInfo({
     <header className="flex flex-col justify-center items-center gap-3 bg-chip p-4 w-full max-w-5xl rounded-lg">
       <picture>
         <img
-          className="rounded-full w-56 h-56 object-cover"
+          className="rounded-full w-56 h-56 object-cover border-4 border-hover shadow-lg shadow-button"
           ref={profileRef}
           src={profile_picture}
           alt={`Profile photo from ${userDetails?.username || "User"}`}

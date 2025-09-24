@@ -12,6 +12,7 @@ import {
   MenuItem,
   FormControlLabel,
   Checkbox,
+  styled,
 } from "@mui/material";
 import { useGetCountries } from "../../hooks/useCountries.js";
 import { useCategories } from "../../hooks/useCategories.js";
@@ -175,8 +176,21 @@ export function AddRecipes() {
 
   const boxInput = "bg-chip p-2 rounded-md";
 
+  const CustomSlider = styled(Slider)(({ theme }) => ({
+    color: "#713B1C",
+    "& .MuiSlider-thumb": {
+      borderRadius: "8px",
+    },
+    "& .MuiSlider-track": {
+      height: 2,
+    },
+    "& .MuiSlider-root": {
+      width: "80%",
+    },
+  }));
+
   return (
-    <main className="flex flex-col w-full max-w-6xl mx-auto my-3">
+    <main className="flex flex-col w-full max-w-6xl mx-auto my-3 bg-chip">
       <header className="mb-2">
         {formStatus === APP_STATUS.IDLE && (
           <h2 className="title-section">{t("Add your new recipe")}</h2>
@@ -195,7 +209,7 @@ export function AddRecipes() {
             <Input
               label={t("Title")}
               error={errors.title}
-              className={`${inputCss}
+              className={`${inputCss} m-auto
                     ${errors.title ? `${inputError}` : `${inputSuccess}`}`}
               {...register("title")}
               type="text"
@@ -207,7 +221,7 @@ export function AddRecipes() {
             <Input
               label={t("Description")}
               error={errors.description}
-              className={`${inputCss}
+              className={`${inputCss} m-auto resize-none
                     ${
                       errors.description ? `${inputError}` : `${inputSuccess}`
                     }`}
@@ -217,11 +231,11 @@ export function AddRecipes() {
             />
           </div>
 
-          <div className={`${boxInput}`}>
+          <div className={`${boxInput} col-span-full md:col-span-1`}>
             <Input
               label={t("Recipe image")}
               error={errors.main_image}
-              className={`${inputCss}
+              className={`${inputCss} m-auto
             ${errors.main_image ? `${inputError}` : `${inputSuccess}`}`}
               {...register("main_image")}
               type="file"
@@ -230,9 +244,14 @@ export function AddRecipes() {
             />
           </div>
 
-          <div className={`${boxInput}`}>
-            <label htmlFor={servingsId}>{t("Servings")}</label>
-            <Slider
+          <div className={`${boxInput} col-span-full md:col-span-1`}>
+            <label
+              htmlFor={servingsId}
+              className="flex-1 text-button font-inter text-md font-medium"
+            >
+              {t("Servings")}
+            </label>
+            <CustomSlider
               aria-label={servingsId}
               defaultValue={2}
               valueLabelDisplay="auto"
@@ -251,7 +270,7 @@ export function AddRecipes() {
             )}
           </div>
 
-          <div className={`${boxInput}`}>
+          <div className={`${boxInput} col-span-full md:col-span-1`}>
             <FormControl fullWidth>
               <InputLabel id={prepTimeId}>{t("Preparation Time")}</InputLabel>
               <Select
@@ -283,7 +302,7 @@ export function AddRecipes() {
             )}
           </div>
 
-          <div className={`${boxInput}`}>
+          <div className={`${boxInput} col-span-full md:col-span-1`}>
             <FormControl fullWidth>
               <InputLabel id={countryId}>{t("Country")}</InputLabel>
               <Select
@@ -320,7 +339,9 @@ export function AddRecipes() {
             )}
             {listCategories.length > 0 ? (
               <>
-                <h3>{t("Categories")}</h3>
+                <h3 className="flex-1 text-button font-inter text-md font-medium">
+                  {t("Categories")}
+                </h3>
                 {listCategories.map((category) => {
                   const { name, id } = category;
 
@@ -329,6 +350,7 @@ export function AddRecipes() {
                       key={id}
                       control={<Checkbox value={id} />}
                       label={t(name)}
+                      className="category-checkbox"
                       {...register("categories")}
                     />
                   );
@@ -353,7 +375,7 @@ export function AddRecipes() {
               inputID={ingredientsId}
               valueInput={ingredientInput}
               onChange={handleChangeIngredientsInput}
-              className={`${inputCss} ${
+              className={`border-2 focus:ring-0 focus:outline-none rounded-md p-2 w-full resize-y formSizingContent bg-card ${
                 errors.ingredients ? `${inputError}` : `${inputSuccess}`
               }`}
               error={errors}
@@ -397,7 +419,7 @@ export function AddRecipes() {
             error={errors.root}
             type="submit"
             disabled={formStatus === APP_STATUS.PENDING}
-            className="rounded-md bg-button font-inter px-5 py-2 text-base text-md"
+            className="rounded-md bg-button font-inter px-5 py-2 text-base text-md cursor-pointer hover:bg-hover"
           />
         </form>
       </section>
