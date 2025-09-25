@@ -10,7 +10,7 @@ export function Footer() {
       {/* {IS_DEVELOPMENT && <Debugger />} */}
       <nav>
         <ul className="font-light text-lg flex flex-row gap-3 justify-center items-center">
-          <li>{t("Web Page built by")} Freddy Romo - 2024</li>
+          <li>Freddy Romo © 2024</li>
           <li>
             <a href="https://www.freddyromo.dev/" target="_blank">
               <img

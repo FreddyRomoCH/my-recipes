@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetRecipes } from "../../hooks/useGetRecipes.js";
 import { useGetCountries } from "../../hooks/useCountries.js";
 import { Boxes } from "../recipes/Boxes.jsx";
@@ -7,6 +7,7 @@ import { CategoriesSlider } from "../slider/CategoriesSlider.jsx";
 import { Loading } from "../Loading.jsx";
 import { Error } from "../Error.jsx";
 import { useTranslation } from "react-i18next";
+import { UtensilsIcon } from "../recipes/UtensilsIcon.jsx";
 
 export function SingleCategory() {
   const [recipes, setRecipes] = useState([]);
@@ -93,8 +94,17 @@ export function SingleCategory() {
           </div>
         </>
       ) : (
-        <h2 className="title-section">
-          {t("No recipes found for", { category: t(categoryName) })}
+        <h2 className="flex flex-col justify-center items-center gap-3 bg-card border border-chip p-5 rounded-lg w-max-xl md:w-xl m-auto mt-5">
+          <UtensilsIcon widthLogo="w-12" color="text-button" fill="#713B1C" />
+          <p className="text-button text-md font-inter font-light">
+            {t("No recipes found for", { category: t(categoryName) })}
+          </p>
+          <Link
+            to="/recipes"
+            className="text-sm font-light font-inter bg-button text-base px-4 py-2 hover:bg-hover text-center m-auto rounded-lg"
+          >
+            {t("AllRecipes")}
+          </Link>
         </h2>
       )}
     </main>

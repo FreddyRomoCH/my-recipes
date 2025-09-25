@@ -34,7 +34,7 @@ export function CategoriesSlider() {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           swipe: true,
           swipeToSlide: true,
           arrows: false,

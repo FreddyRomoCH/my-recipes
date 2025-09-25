@@ -29,7 +29,7 @@ export function MenuLeft() {
       )}
 
       {isMobile && isAuthenticated && (
-        <li className="group font-light font-lora py-3 text-lg">
+        <li className="group font-lora py-3 text-md md:text-lg font-light cursor-pointer">
           <button onClick={handleLogout}>{t("LogOut")}</button>
         </li>
       )}
