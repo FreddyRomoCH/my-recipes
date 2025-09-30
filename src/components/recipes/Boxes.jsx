@@ -59,7 +59,7 @@ export function Boxes({
         </p>
 
         {!is_active ? (
-          <p className="bg-gray-600 rounded text-secondary-text p-2 font-thin">
+          <p className="bg-button rounded text-base p-2 font-thin">
             {t("WaitingAdmin")}
           </p>
         ) : (
