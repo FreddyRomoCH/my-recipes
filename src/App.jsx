@@ -17,6 +17,7 @@ import { Countries } from "./components/recipes/Countries.jsx";
 import { Admin } from "./components/admin/Admin.jsx";
 import { useTranslation } from "react-i18next";
 import { Loading } from "./components/Loading.jsx";
+import { NotFound } from "./components/404/NotFound.jsx";
 import "./index.css";
 
 function App() {
@@ -90,7 +91,7 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
-            <Route path="*" element={<h1>Not Found</h1>}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
           <Footer />
         </AuthProvider>
